@@ -2,157 +2,283 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>lazy life. | 小比兔官方入口</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>lazy life. | Official Portal</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
     body {
-      background-color: #fafafa;
-      color: #222;
+      background-color: #f7f8fa;
+      color: #1a1a1a;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 40px 20px;
+      padding: 32px 20px 36px 20px;
     }
     .wrapper {
       width: 100%;
-      max-width: 480px;
+      max-width: 440px;
       text-align: center;
     }
-    .brand-title {
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      margin-bottom: 8px;
+
+    /* 頂部語言切換列 */
+    .lang-switcher {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
     }
-    .brand-subtitle {
-      font-size: 14px;
-      color: #777;
-      margin-bottom: 32px;
+    .lang-btn {
+      border: 1px solid #e0e2e6;
+      background: #ffffff;
+      color: #666;
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
-    .avatar-box {
-      width: 140px;
-      height: 140px;
-      margin: 0 auto 24px auto;
-      border-radius: 50%;
-      background: #fff;
+    .lang-btn.active {
+      background: #111111;
+      color: #ffffff;
+      border-color: #111111;
+    }
+
+    /* 頂部英雄卡片 */
+    .hero-box {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 24px 20px 20px 20px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.04);
+      border: 1px solid #ebebeb;
+      margin-bottom: 24px;
+    }
+    .hero-img-wrap {
+      width: 180px;
+      height: 135px;
+      margin: 0 auto 12px auto;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-      overflow: hidden;
     }
-    .avatar-box img {
-      width: 85%;
-      height: 85%;
+    .hero-img-wrap img {
+      max-width: 100%;
+      max-height: 100%;
       object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+    .brand-title {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+      color: #111;
+    }
+    .brand-subtitle {
+      font-size: 13px;
+      color: #888;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
     }
     .bio {
-      font-size: 15px;
+      font-size: 13.5px;
       line-height: 1.6;
-      color: #444;
-      margin-bottom: 36px;
-      padding: 0 10px;
+      color: #555;
+    }
+
+    /* 連結卡片區塊 */
+    .section-title {
+      font-size: 12px;
+      text-align: left;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #999;
+      text-transform: uppercase;
+      margin: 18px 0 10px 4px;
     }
     .links-container {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
+      margin-bottom: 24px;
     }
     .hub-card {
       background: #ffffff;
       border: 1px solid #eaeaea;
-      padding: 18px 20px;
+      padding: 14px 16px;
       border-radius: 20px;
       text-decoration: none;
       color: inherit;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.02);
       transition: all 0.2s ease;
+      gap: 14px;
     }
     .hub-card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
       border-color: #ddd;
     }
-    .card-left {
+    .hub-card:active {
+      transform: scale(0.98);
+    }
+
+    .card-thumb {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f7f8fa;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+
+    .card-body {
+      flex: 1;
       text-align: left;
     }
     .card-title {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
+      color: #111;
     }
     .card-desc {
-      font-size: 12.5px;
-      color: #888;
+      font-size: 12px;
+      color: #777;
+      line-height: 1.35;
     }
     .badge {
-      font-size: 11px;
+      font-size: 10.5px;
       background: #111;
       color: #fff;
       padding: 2px 7px;
-      border-radius: 10px;
+      border-radius: 8px;
       font-weight: 600;
     }
+    .badge.yt { background: #ff0000; }
+    .badge.fb { background: #1877f2; }
+    .badge.ig { background: #e1306c; }
+
     .arrow {
-      color: #bbb;
+      color: #ccc;
       font-size: 18px;
+      font-weight: 600;
+      padding-right: 4px;
     }
+
     footer {
-      margin-top: 48px;
+      margin-top: 16px;
       font-size: 12px;
       color: #aaa;
+      letter-spacing: 0.5px;
     }
   </style>
 </head>
 <body>
 
   <div class="wrapper">
-    <div class="avatar-box">
-      <!-- 換成你的小比兔頭像 -->
-      <img src="images/icon-512.png" alt="Xiaobi">
+    <!-- 語言切換選單 -->
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('zh')">繁體中文</button>
+      <button class="lang-btn" onclick="setLang('en')">English</button>
+      <button class="lang-btn" onclick="setLang('ja')">日本語</button>
+      <button class="lang-btn" onclick="setLang('de')">Deutsch</button>
+      <button class="lang-btn" onclick="setLang('fr')">Français</button>
     </div>
-    
-    <h1 class="brand-title">lazy life.</h1>
-    <p class="brand-subtitle">小比兔的低耗能日常世界</p>
-    
-    <p class="bio">
-      我們不談宏大的夢想，只研究如何合情合理地退出演化。<br>
-      專注於製造低能耗手帳、10秒厭世哲學與安靜放空。
-    </p>
 
+    <!-- 頂部英雄卡片 -->
+    <div class="hero-box">
+      <div class="hero-img-wrap">
+        <img src="images/xiaobi-01.png" alt="Xiaobi">
+      </div>
+      <h1 class="brand-title">lazy life.</h1>
+      <p id="heroSubtitle" class="brand-subtitle">小比兔的低耗能日常世界</p>
+      <p id="heroBio" class="bio">
+        我們不談宏大的夢想，只研究如何合情合理地退出演化。<br>
+        專注於低能耗生存、10秒厭世哲學與安靜放空。
+      </p>
+    </div>
+
+    <!-- 工具與出版品 -->
+    <div id="secToolsTitle" class="section-title">工具與出版品</div>
     <div class="links-container">
-      <!-- 時鐘連結 -->
+      <!-- 每日躺平時鐘 -->
       <a href="https://yanghane1120.github.io/xiaobi-clock/xiaobi-card/" class="hub-card" target="_blank">
-        <div class="card-left">
-          <div class="card-title">🕒 每日躺平時鐘 & 番茄鐘 <span class="badge">Tool</span></div>
-          <div class="card-desc">桌面陪伴、隨機抽卡與防內耗計時工具</div>
+        <div class="card-thumb">
+          <img src="images/xiaobi-02.png" alt="Clock">
+        </div>
+        <div class="card-body">
+          <div class="card-title"><span id="clockTitle">每日躺平時鐘 & 番茄鐘</span> <span class="badge">Tool</span></div>
+          <div id="clockDesc" class="card-desc">桌面陪伴、隨機抽卡與防內耗計時工具</div>
         </div>
         <div class="arrow">›</div>
       </a>
 
-      <!-- 筆記本出版物 -->
-      <a href="https://www.amazon.com/dp/B0HNWSQ6Z4" class="hub-card" target="_blank">
-        <div class="card-left">
-          <div class="card-title">📓 小比兔的廢物筆記本 <span class="badge">Book</span></div>
-          <div class="card-desc">Amazon KDP 限量出版，適合記滿廢話的小誌手帳</div>
+      <!-- 筆記本手帳 -->
+      <a id="bookLink" href="https://www.amazon.com/dp/B0HNWSQ6Z4" class="hub-card" target="_blank">
+        <div class="card-thumb">
+          <img src="images/xiaobi-12.png" alt="Book">
+        </div>
+        <div class="card-body">
+          <div class="card-title"><span id="bookTitle">小比兔的廢物筆記本</span> <span class="badge">Book</span></div>
+          <div id="bookDesc" class="card-desc">Amazon KDP 限量小誌，專門用來記滿廢話</div>
+        </div>
+        <div class="arrow">›</div>
+      </a>
+    </div>
+
+    <!-- 社群平台入口 -->
+    <div id="secSocialTitle" class="section-title">官方社群平台</div>
+    <div class="links-container">
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/@HeyXiaoBi" class="hub-card" target="_blank">
+        <div class="card-thumb">
+          <img src="images/xiaobi-10.png" alt="YouTube">
+        </div>
+        <div class="card-body">
+          <div class="card-title">YouTube <span class="badge yt">Shorts</span></div>
+          <div id="ytDesc" class="card-desc">@HeyXiaoBi｜10秒搞笑短劇與日常動畫</div>
         </div>
         <div class="arrow">›</div>
       </a>
 
-      <!-- YouTube Shorts / 動畫短劇 -->
-      <a href="https://www.youtube.com" class="hub-card" target="_blank">
-        <div class="card-left">
-          <div class="card-title">🎬 10 秒搞笑短劇 <span class="badge">Shorts</span></div>
-          <div class="card-desc">追蹤小比兔與夥伴們的日常生活迷因</div>
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/ldx779" class="hub-card" target="_blank">
+        <div class="card-thumb">
+          <img src="images/xiaobi-15.png" alt="Instagram">
+        </div>
+        <div class="card-body">
+          <div class="card-title">Instagram <span class="badge ig">@ldx779</span></div>
+          <div id="igDesc" class="card-desc">最新圖文短漫、日常隨筆與限時動態</div>
+        </div>
+        <div class="arrow">›</div>
+      </a>
+
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/yanghane2" class="hub-card" target="_blank">
+        <div class="card-thumb">
+          <img src="images/xiaobi-09.png" alt="Facebook">
+        </div>
+        <div class="card-body">
+          <div class="card-title">Facebook <span class="badge fb">Meta</span></div>
+          <div id="fbDesc" class="card-desc">追蹤小比兔官方最新創作動態與交流</div>
         </div>
         <div class="arrow">›</div>
       </a>
@@ -163,5 +289,111 @@
     </footer>
   </div>
 
+  <script>
+    const translations = {
+      zh: {
+        subtitle: "小比兔的低耗能日常世界",
+        bio: "我們不談宏大的夢想，只研究如何合情合理地退出演化。<br>專注於低能耗生存、10秒厭世哲學與安靜放空。",
+        secTools: "工具與出版品",
+        secSocial: "官方社群平台",
+        clockTitle: "每日躺平時鐘 & 番茄鐘",
+        clockDesc: "桌面陪伴、隨機抽卡與防內耗計時工具",
+        bookTitle: "小比兔的廢物筆記本",
+        bookDesc: "Amazon KDP 限量小誌，專門用來記滿廢話",
+        ytDesc: "@HeyXiaoBi｜10秒搞笑短劇與日常動畫",
+        igDesc: "最新圖文短漫、日常隨筆與限時動態",
+        fbDesc: "追蹤小比兔官方最新創作動態與交流"
+      },
+      en: {
+        subtitle: "A Low-Energy World with Xiaobi the Rabbit",
+        bio: "No grand ambitions here—just discovering how to effortlessly devolve into liquid.<br>Dedicated to zero-burnout living, 10-second philosophy, and quiet staring.",
+        secTools: "Tools & Publications",
+        secSocial: "Official Social Media",
+        clockTitle: "Lying Flat Desk Clock & Pomodoro",
+        clockDesc: "Desktop companion, quote card draws, and burnout-free timer.",
+        bookTitle: "Little Rabbit's Notes",
+        bookDesc: "Published on Amazon KDP. A notebook made strictly for useless thoughts.",
+        ytDesc: "@HeyXiaoBi | 10-second funny skits & daily comics",
+        igDesc: "Webcomics, daily sketches & updates @ldx779",
+        fbDesc: "Official creator news and brand community"
+      },
+      ja: {
+        subtitle: "シャオビの省エネな日常ワールド",
+        bio: "大きな夢は語りません。いかに自然に液体へと退化できるかを追求中。<br>省エネな暮らし、10秒の脱力哲学、そして静かな放心をお届けします。",
+        secTools: "ツール ＆ 出版物",
+        secSocial: "公式SNS",
+        clockTitle: "脱力デスククロック ＆ ポモドーロ",
+        clockDesc: "デスクトップのお供に。ランダム名言ガチャとタイマー機能。",
+        bookTitle: "小さなウサギの無駄ノート",
+        bookDesc: "Amazon KDPにて発売中。くだらないメモを残すための一冊。",
+        ytDesc: "@HeyXiaoBi｜10秒ショートギャグ＆日常アニメ",
+        igDesc: "最新イラスト、短編漫画、日常のスケッチ @ldx779",
+        fbDesc: "公式最新情報とコミュニティ"
+      },
+      de: {
+        subtitle: "Die energiesparende Welt des kleinen Hasen",
+        bio: "Keine großen Träume. Wir erforschen nur, wie man sich stressfrei auflöst.<br>Gewidmet dem energiesparenden Leben, 10-Sekunden-Philosophie und dem Nichtstun.",
+        secTools: "Tools & Bücher",
+        secSocial: "Offizielle Kanäle",
+        clockTitle: "Liege-Uhr & Pomodoro-Timer",
+        clockDesc: "Schreibtisch-Begleiter mit Zufallskarten und Anti-Burnout-Timer.",
+        bookTitle: "Der nutzlose Notizblock des kleinen weißen Hasen",
+        bookDesc: "Auf Amazon KDP erschienen. Perfekt für all die unnützen Gedanken.",
+        ytDesc: "@HeyXiaoBi | 10-Sekunden-Sketche & Comics",
+        igDesc: "Webcomics, Skizzen & Updates @ldx779",
+        fbDesc: "Offizielle Neuigkeiten & Community"
+      },
+      fr: {
+        subtitle: "Le monde à faible énergie du petit lapin blanc",
+        bio: "Pas de grandes ambitions. Nous cherchons juste à nous liquéfier sans effort.<br>Dédié à la survie sans stress, à la philosophie de 10 secondes et au repos.",
+        secTools: "Outils & Livres",
+        secSocial: "Réseaux Officiels",
+        clockTitle: "Horloge Paresseuse & Pomodoro",
+        clockDesc: "Compagnon de bureau, cartes de citations et minuteur anti-stress.",
+        bookTitle: "Le carnet inutile du petit lapin blanc",
+        bookDesc: "Disponible sur Amazon KDP. Pour noter tout ce qui n'a aucune importance.",
+        ytDesc: "@HeyXiaoBi | Skits de 10 secondes et animations",
+        igDesc: "Bandes dessinées, croquis et actus @ldx779",
+        fbDesc: "Actualités officielles et communauté"
+      }
+    };
+
+    function setLang(lang) {
+      const data = translations[lang] || translations.zh;
+
+      // 更新內文
+      document.getElementById('heroSubtitle').innerText = data.subtitle;
+      document.getElementById('heroBio').innerHTML = data.bio;
+      document.getElementById('secToolsTitle').innerText = data.secTools;
+      document.getElementById('secSocialTitle').innerText = data.secSocial;
+      document.getElementById('clockTitle').innerText = data.clockTitle;
+      document.getElementById('clockDesc').innerText = data.clockDesc;
+      document.getElementById('bookTitle').innerText = data.bookTitle;
+      document.getElementById('bookDesc').innerText = data.bookDesc;
+      document.getElementById('ytDesc').innerText = data.ytDesc;
+      document.getElementById('igDesc').innerText = data.igDesc;
+      document.getElementById('fbDesc').innerText = data.fbDesc;
+
+      // 更新按鈕高亮狀態
+      const btns = document.querySelectorAll('.lang-btn');
+      const langOrder = ['zh', 'en', 'ja', 'de', 'fr'];
+      btns.forEach((btn, index) => {
+        if (langOrder[index] === lang) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // 儲存偏好語言
+      localStorage.setItem('xiaobi_lang', lang);
+    }
+
+    // 載入時依據記憶或預設繁中
+    window.onload = () => {
+      const savedLang = localStorage.getItem('xiaobi_lang') || 'zh';
+      setLang(savedLang);
+    };
+  </script>
 </body>
 </html>
