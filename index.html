@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>lazy life. | 小比兔官方入口</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: #fafafa;
+      color: #222;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    .wrapper {
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+    }
+    .brand-title {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+    .brand-subtitle {
+      font-size: 14px;
+      color: #777;
+      margin-bottom: 32px;
+    }
+    .avatar-box {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 24px auto;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+    .avatar-box img {
+      width: 85%;
+      height: 85%;
+      object-fit: contain;
+    }
+    .bio {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #444;
+      margin-bottom: 36px;
+      padding: 0 10px;
+    }
+    .links-container {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .hub-card {
+      background: #ffffff;
+      border: 1px solid #eaeaea;
+      padding: 18px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      transition: all 0.2s ease;
+    }
+    .hub-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      border-color: #ddd;
+    }
+    .card-left {
+      text-align: left;
+    }
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-desc {
+      font-size: 12.5px;
+      color: #888;
+    }
+    .badge {
+      font-size: 11px;
+      background: #111;
+      color: #fff;
+      padding: 2px 7px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+    .arrow {
+      color: #bbb;
+      font-size: 18px;
+    }
+    footer {
+      margin-top: 48px;
+      font-size: 12px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <div class="avatar-box">
+      <!-- 換成你的小比兔頭像 -->
+      <img src="images/icon-512.png" alt="Xiaobi">
+    </div>
+    
+    <h1 class="brand-title">lazy life.</h1>
+    <p class="brand-subtitle">小比兔的低耗能日常世界</p>
+    
+    <p class="bio">
+      我們不談宏大的夢想，只研究如何合情合理地退出演化。<br>
+      專注於製造低能耗手帳、10秒厭世哲學與安靜放空。
+    </p>
+
+    <div class="links-container">
+      <!-- 時鐘連結 -->
+      <a href="https://yanghane1120.github.io/xiaobi-clock/xiaobi-card/" class="hub-card" target="_blank">
+        <div class="card-left">
+          <div class="card-title">🕒 每日躺平時鐘 & 番茄鐘 <span class="badge">Tool</span></div>
+          <div class="card-desc">桌面陪伴、隨機抽卡與防內耗計時工具</div>
+        </div>
+        <div class="arrow">›</div>
+      </a>
+
+      <!-- 筆記本出版物 -->
+      <a href="https://www.amazon.com/dp/B0HNWSQ6Z4" class="hub-card" target="_blank">
+        <div class="card-left">
+          <div class="card-title">📓 小比兔的廢物筆記本 <span class="badge">Book</span></div>
+          <div class="card-desc">Amazon KDP 限量出版，適合記滿廢話的小誌手帳</div>
+        </div>
+        <div class="arrow">›</div>
+      </a>
+
+      <!-- YouTube Shorts / 動畫短劇 -->
+      <a href="https://www.youtube.com" class="hub-card" target="_blank">
+        <div class="card-left">
+          <div class="card-title">🎬 10 秒搞笑短劇 <span class="badge">Shorts</span></div>
+          <div class="card-desc">追蹤小比兔與夥伴們的日常生活迷因</div>
+        </div>
+        <div class="arrow">›</div>
+      </a>
+    </div>
+
+    <footer>
+      © 2026 lazy life. All rights reserved.
+    </footer>
+  </div>
+
+</body>
+</html>
