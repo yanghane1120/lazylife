@@ -43,7 +43,7 @@
       padding: 30px 16px 60px;
     }
 
-    /* 頂部語言切換列 (已適配 8 國語言自動包折) */
+    /* 頂部語言切換列 (已適配 8 國語言自動折行) */
     .lang-bar {
       width: 100%;
       max-width: 600px;
@@ -387,7 +387,7 @@
       border-radius: 14px;
       padding: 16px;
       border: 1px dashed var(--ll-blue);
-      margin-bottom: 26px;
+      margin-bottom: 20px;
     }
 
     .xiaobi-title {
@@ -401,6 +401,53 @@
       font-size: 0.92rem;
       color: #0c4a6e;
       line-height: 1.5;
+    }
+
+    /* ★ 甩鍋給 AI 區塊樣式 ★ */
+    .ask-ai-box {
+      background: #ffffff;
+      border: 1.5px dashed var(--ll-blue-border);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .ask-ai-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #0369a1;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .ai-btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .ai-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f8fafc;
+      border: 1px solid var(--ll-blue-border);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .ai-btn:hover {
+      background: var(--ll-blue-light);
+      border-color: var(--ll-blue);
+      color: var(--ll-blue-hover);
+      transform: translateY(-1px);
     }
 
     /* 導購區 */
@@ -589,6 +636,24 @@
         <div id="xiaobiWisdom" class="xiaobi-quote"></div>
       </div>
 
+      <!-- ★ 甩鍋給 AI 區塊 ★ -->
+      <div class="ask-ai-box">
+        <div class="ask-ai-title" id="txtAskAi">
+          🐰「還有不懂？本兔很忙要去睡午覺了，懶得解釋。自己拿籤詩去拷問 AI 吧：」
+        </div>
+        <div class="ai-btn-group">
+          <a id="aiChatGpt" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" class="ai-btn">
+            🟢 ChatGPT
+          </a>
+          <a id="aiGemini" href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer" class="ai-btn">
+            🔵 Gemini
+          </a>
+          <a id="aiClaude" href="https://claude.ai/new" target="_blank" rel="noopener noreferrer" class="ai-btn">
+            🟣 Claude
+          </a>
+        </div>
+      </div>
+
       <div class="cta-container">
         <div id="ctaDesc" class="cta-desc">在命運反悔之前，先把這段神諭記在小比兔筆記本裡。</div>
         <a id="ctaBtn" href="https://link.amazon/B072n2eaF" target="_blank" class="cta-btn">前往 Amazon 收藏《小比兔的廢物筆記本》</a>
@@ -667,6 +732,7 @@
         legendTip: "🐰 <strong>Xiaobi's Reality Check:</strong> \"He was a cosmic genius, but he literally worked 20 hours a day until terminal burnout. He is an icon, but definitely NOT a role model for work-life balance. Use his divine oracle, but never copy his overtime schedule.\"",
         verseLbl: "The Oracle Verse",
         insightLbl: "Insight & Guidance",
+        askAi: "🐰 \"Still confused? I'm exhausted and taking a nap. Go interrogate these AIs:\"",
         ctaDesc: "Record this warning in your notebook before fate changes its mind.",
         ctaBtn: officialEnBookTitle,
         kdpUrl: "https://link.amazon/B072n2eaF",
@@ -676,7 +742,7 @@
       zh: {
         title: "小比兔諸葛神算",
         sub: "傳承古老中國的三國朝代諸葛神數・384 爻命運指引",
-        speech: "<strong>🐰 站長小比兔：</strong><br>「想要過上更完美的躺平生活嗎？來算命吧！<br><strong>遊戲規則：</strong>心裡默想問題，選定 3 個數字或輸入 3 個中文字測字，也可隨機搖號。不管卦象說什麼，先睡個午覺總是沒錯的。」",
+        speech: "<strong>🐰 站長小比兔：</strong><br>「想要過上更完美的躺平生活嗎？來算命吧！<br><strong>遊戲規則：</strong>心裡默想問題，選定 3 個數字或輸入 3 個中文字測字，也可隨機搖號。不管卦象說什麼，先睡個午 Judicial 總是沒錯的。」",
         cast: "開始解卦",
         rand: "隨機搖號",
         legendTitle: "⚔️ 關於神算之祖：諸葛孔明",
@@ -684,6 +750,7 @@
         legendTip: "🐰 <strong>小比兔的真心話：</strong>「孔明先生鞠躬盡瘁、死而後已，是千古偉人沒錯，但他也是歷史上最嚴重的過勞死受害者。我們誠心算他的卦就好，千萬不要學他天天無休加班。」",
         verseLbl: "籤詩原文 / 譯文",
         insightLbl: "處世指引",
+        askAi: "🐰「還有不懂？本兔很忙要去睡午覺了，懶得解釋。自己拿籤詩去拷問 AI 吧：」",
         ctaDesc: "在命運反悔之前，先把這段神諭記在小比兔筆記本裡。",
         ctaBtn: "前往 Amazon 收藏《小比兔的廢物筆記本》",
         kdpUrl: "https://link.amazon/B072n2eaF",
@@ -701,6 +768,7 @@
         legendTip: "🐰 <strong>シャオビの脱力ツッコミ：</strong>「孔明先生は超天才だけど、完全にブラック労働で過労死したタイプだよ。占い結果はありがたく頂くとして、生活リズムだけは絶対に真似しちゃダメ。」",
         verseLbl: "お告げの詩",
         insightLbl: "人生のヒント",
+        askAi: "🐰「まだ分からない？もう疲れたから昼寝するよ。あとはAIに丸投げしてね：」",
         ctaDesc: "運命が変わってしまう前に、ノートに記録しておこう。",
         ctaBtn: "小比うさぎのダメダメノート (日本語版) をAmazonで見る",
         kdpUrl: "https://link.amazon/B00kvYWNj",
@@ -718,6 +786,7 @@
         legendTip: "🐰 <strong>La remarque lucide de Xiaobi :</strong> « C'était un génie absolu, mais il travaillait 20h par jour jusqu'à l'épuisement total. Consultez son oracle, mais n'imitez surtout pas ses horaires de travail. »",
         verseLbl: "Le Verset Sacré",
         insightLbl: "Conseil & Sagesse",
+        askAi: "🐰 « Encore des questions ? Je vais faire la sieste, demandez plutôt aux IA : »",
         ctaDesc: "Notez cet avertissement dans votre carnet avant que le destin ne change d'avis.",
         ctaBtn: "Le carnet inutile du petit lapin (Français)",
         kdpUrl: "https://link.amazon/B0dTmtta4",
@@ -735,6 +804,7 @@
         legendTip: "🐰 <strong>Xiaobis Realitäts-Check :</strong> „Er war ein kosmisches Genie, starb aber buchstäblich an 20-Stunden-Tagen durch Überarbeitung. Nutze sein göttliches Orakel, aber mach bloß keine Überstunden wie er.“",
         verseLbl: "Der Orakel-Vers",
         insightLbl: "Einsicht & Rat",
+        askAi: "🐰 „Noch Fragen? Ich mache jetzt Feierabend. Frag doch einfach die KI:“",
         ctaDesc: "Notiere diese Warnung in deinem Notizblock, bevor sich das Schicksal besinnt.",
         ctaBtn: "Der Notizblock des kleinen Hasen (Deutsch)",
         kdpUrl: "https://link.amazon/B029TO94d",
@@ -752,6 +822,7 @@
         legendTip: "🐰 <strong>El aviso realista de Xiaobi:</strong> «Era un genio cósmico, pero trabajaba 20 horas al día hasta el colapso total. Consulta su oráculo sagrado, pero jamás copies sus horas extras.»",
         verseLbl: "El Verso del Oráculo",
         insightLbl: "Consejo de Vida",
+        askAi: "🐰 «¿Aún con dudas? Me voy a dormir la siesta, pregúntale a estas IA:»",
         ctaDesc: "Apunta esta revelación en tu cuaderno antes de que el destino cambie de opinión.",
         ctaBtn: "Ver el cuaderno de Xiaobi en Amazon",
         kdpUrl: "https://link.amazon/B072n2eaF",
@@ -769,6 +840,7 @@
         legendTip: "🐰 <strong>Toque de Realidade do Xiaobi:</strong> «Ele era um gênio cósmico, mas morreu literalmente de tanto trabalhar 20 horas por dia. Use o oráculo dele, mas nunca imite a rotina de trabalho dele.»",
         verseLbl: "O Verso Sagrado",
         insightLbl: "Conselho para a Vida",
+        askAi: "🐰 «Ainda com dúvidas? Vou tirar uma soneca, pergunte para essas IAs:»",
         ctaDesc: "Anote esse aviso no seu caderno antes que o destino mude de ideia.",
         ctaBtn: "Conhecer o caderno do Xiaobi na Amazon",
         kdpUrl: "https://link.amazon/B072n2eaF",
@@ -786,6 +858,7 @@
         legendTip: "🐰 <strong>Consiglio rilassato di Xiaobi:</strong> «Era un genio assoluto, ma lavorava 20 ore al giorno fino a consumarsi. Ascolta il suo oracolo, ma non azzardarti a fare i suoi stessi orari di lavoro.»",
         verseLbl: "Il Verso dell'Oracolo",
         insightLbl: "Consiglio di Vita",
+        askAi: "🐰 «Hai ancora dubbi? Vado a dormire, chiedi pure a queste IA:»",
         ctaDesc: "Scrivi questo avviso nel tuo taccuino prima che il destino ci ripensi.",
         ctaBtn: "Scopri il taccuino di Xiaobi su Amazon",
         kdpUrl: "https://link.amazon/B072n2eaF",
@@ -817,6 +890,7 @@
       document.getElementById('lblVerse').textContent = dict.verseLbl;
       document.getElementById('lblInsight').textContent = dict.insightLbl;
       document.getElementById('ctaDesc').textContent = dict.ctaDesc;
+      document.getElementById('txtAskAi').textContent = dict.askAi;
       
       const ctaBtn = document.getElementById('ctaBtn');
       ctaBtn.textContent = dict.ctaBtn || "前往 Amazon 收藏《小比兔的廢物筆記本》";
@@ -942,7 +1016,14 @@
       document.getElementById('oracleGuidance').textContent = insight;
       document.getElementById('xiaobiWisdom').textContent = `"${xiaobi}"`;
 
+      // 預設帶給 AI 的提問 Prompt（支援帶參數跳轉）
+      const askPrompt = encodeURIComponent(`我在小比兔諸葛神算抽到了第 ${signIndex} 籤，籤詩為：「${verse}」。請從心理學與哲學角度，為我詳細解讀這段籤詩對我當前生活的啟發與具體指引。`);
+      document.getElementById('aiChatGpt').href = `https://chatgpt.com/?q=${askPrompt}`;
+      document.getElementById('aiGemini').href = `https://gemini.google.com/app`;
+      document.getElementById('aiClaude').href = `https://claude.ai/new`;
+
       const dict = i18n[currentLang] || i18n['en'];
+      document.getElementById('txtAskAi').textContent = dict.askAi;
       const ctaBtn = document.getElementById('ctaBtn');
       ctaBtn.textContent = dict.ctaBtn || "前往 Amazon 收藏《小比兔的廢物筆記本》";
       ctaBtn.href = dict.kdpUrl || "https://link.amazon/B072n2eaF";
