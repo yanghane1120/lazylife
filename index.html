@@ -5,21 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>lazy life. | Official Portal</title>
   
-  <!-- 瀏覽器分頁圖示 (Favicon: #3177a4 經典藍底白字 LL) -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%233177a4'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='-apple-system,BlinkMacSystemFont,Arial,sans-serif' font-size='32' font-weight='900' fill='%23ffffff'>LL</text></svg>">
+  <!-- 瀏覽器分頁圖示 (Favicon: 神算專屬水藍底白字 LL) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%230ea5e9'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='-apple-system,BlinkMacSystemFont,Arial,sans-serif' font-size='32' font-weight='900' fill='%23ffffff'>LL</text></svg>">
 
   <link rel="manifest" href="manifest.json">
   <style>
     :root {
-      --brand-blue: #3177a4;       /* 筆記本封面色號 */
-      --brand-hover: #265d82;      /* 深調沉穩藍 */
-      --water-blue: #56a0ce;       /* 明亮水藍色 */
-      --water-light: #e8f4fa;      /* 柔和水藍底色 */
-      --water-border: #bde0f3;     /* 水藍邊框 */
-      --bg: #f3f8fb;
+      --ll-blue: #0ea5e9;          /* 神算專屬水藍主色 */
+      --ll-blue-hover: #0284c7;    /* 水藍深色微調 */
+      --ll-blue-light: #e0f2fe;    /* 柔和水藍底色 */
+      --ll-blue-border: #bae6fd;   /* 清新水藍邊框 */
+      --bg: #f0f7ff;
       --card-bg: #ffffff;
-      --text: #1a2530;
-      --muted: #627485;
+      --text: #1e293b;
+      --muted: #64748b;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -32,8 +31,8 @@
       flex-direction: column;
       align-items: center;
       padding: 32px 20px 36px 20px;
-      background-image: radial-gradient(var(--water-border) 0.8px, transparent 0.8px);
-      background-size: 22px 22px;
+      background-image: radial-gradient(var(--ll-blue-border) 0.8px, transparent 0.8px);
+      background-size: 20px 20px;
     }
     .wrapper {
       width: 100%;
@@ -50,7 +49,7 @@
       flex-wrap: wrap;
     }
     .lang-btn {
-      border: 1px solid var(--water-border);
+      border: 1px solid var(--ll-blue-border);
       background: #ffffff;
       color: var(--muted);
       font-size: 11.5px;
@@ -61,10 +60,10 @@
       transition: all 0.2s ease;
     }
     .lang-btn.active, .lang-btn:hover {
-      background: var(--brand-blue);
+      background: var(--ll-blue);
       color: #ffffff;
-      border-color: var(--brand-blue);
-      box-shadow: 0 2px 8px rgba(49, 119, 164, 0.25);
+      border-color: var(--ll-blue);
+      box-shadow: 0 2px 8px rgba(14, 165, 233, 0.25);
     }
 
     /* 頂部英雄卡片 */
@@ -72,8 +71,8 @@
       background: var(--card-bg);
       border-radius: 28px;
       padding: 24px 20px 20px 20px;
-      box-shadow: 0 12px 32px rgba(49, 119, 164, 0.06);
-      border: 1px solid var(--water-border);
+      box-shadow: 0 12px 32px rgba(14, 165, 233, 0.06);
+      border: 1px solid var(--ll-blue-border);
       margin-bottom: 24px;
     }
     .hero-img-wrap {
@@ -95,11 +94,11 @@
       font-weight: 800;
       letter-spacing: 2px;
       margin-bottom: 4px;
-      color: var(--brand-blue);
+      color: var(--ll-blue-hover);
     }
     .brand-subtitle {
       font-size: 13px;
-      color: var(--water-blue);
+      color: var(--ll-blue);
       font-weight: 700;
       letter-spacing: 1px;
       margin-bottom: 12px;
@@ -107,7 +106,7 @@
     .bio {
       font-size: 13.5px;
       line-height: 1.6;
-      color: #4b5d6e;
+      color: #475569;
     }
 
     /* 連結卡片區塊 */
@@ -116,7 +115,7 @@
       text-align: left;
       font-weight: 700;
       letter-spacing: 1.5px;
-      color: var(--brand-blue);
+      color: var(--ll-blue-hover);
       text-transform: uppercase;
       margin: 18px 0 10px 4px;
     }
@@ -128,21 +127,21 @@
     }
     .hub-card {
       background: #ffffff;
-      border: 1px solid var(--water-border);
+      border: 1px solid var(--ll-blue-border);
       padding: 14px 16px;
       border-radius: 20px;
       text-decoration: none;
       color: inherit;
       display: flex;
       align-items: center;
-      box-shadow: 0 4px 14px rgba(49, 119, 164, 0.04);
+      box-shadow: 0 4px 14px rgba(14, 165, 233, 0.04);
       transition: all 0.2s ease;
       gap: 14px;
     }
     .hub-card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(49, 119, 164, 0.12);
-      border-color: var(--water-blue);
+      box-shadow: 0 8px 24px rgba(14, 165, 233, 0.12);
+      border-color: var(--ll-blue);
     }
     .hub-card:active {
       transform: scale(0.98);
@@ -155,7 +154,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--water-light);
+      background: var(--ll-blue-light);
       border-radius: 12px;
       overflow: hidden;
     }
@@ -177,16 +176,16 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      color: #172a3a;
+      color: #0f172a;
     }
     .card-desc {
       font-size: 12px;
-      color: #63778a;
+      color: #64748b;
       line-height: 1.35;
     }
     .badge {
       font-size: 10.5px;
-      background: var(--brand-blue);
+      background: linear-gradient(135deg, var(--ll-blue), var(--ll-blue-hover));
       color: #fff;
       padding: 2px 7px;
       border-radius: 8px;
@@ -197,7 +196,7 @@
     .badge.ig { background: #e1306c; }
 
     .arrow {
-      color: var(--water-blue);
+      color: var(--ll-blue);
       font-size: 18px;
       font-weight: 600;
       padding-right: 4px;
@@ -206,7 +205,7 @@
     footer {
       margin-top: 16px;
       font-size: 12px;
-      color: #8c9dae;
+      color: #94a3b8;
       letter-spacing: 0.5px;
     }
   </style>
