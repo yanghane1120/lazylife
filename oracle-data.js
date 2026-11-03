@@ -1,4 +1,4 @@
-// oracle-data.js - 正統諸葛神數 384 籤與小比兔厭世哲學資料庫
+// oracle-data.js - 正統諸葛神數 384 籤與小比兔厭世哲學資料庫 (EN, ZH, JP, FR, DE, ES, PT, IT)
 
 // 1. 正統古籍諸葛神數原始籤詩（384 籤陣列，索引 0 對應第 1 籤）
 const traditionalVerses = [
@@ -388,7 +388,7 @@ const traditionalVerses = [
   "人非孔顏鮮能無過，過而能改仍復無過，開花不足憑，結果方為準，放開懷抱意欣欣。"
 ];
 
-// 2. 籤意五類吉凶傾向（用於小比兔精準厭世解讀與多語指引）
+// 2. 籤意五類吉凶傾向（支援 8 國語言）
 const fortuneTypes = {
   GREAT_LUCK: {
     insight: {
@@ -396,7 +396,10 @@ const fortuneTypes = {
       zh: "運勢頂峰，大局已定。幾乎不用費力，自然水到渠成。",
       jp: "最高の運気。障害は自然と消え去り、成果を手にする時です。",
       fr: "Chance maximale. L'univers dégage la voie devant vous.",
-      de: "Höchstes Glück. Alle Hindernisse lösen sich von selbst auf."
+      de: "Höchstes Glück. Alle Hindernisse lösen sich von selbst auf.",
+      es: "Fortuna en su punto más alto. El universo está despejando todos los obstáculos.",
+      pt: "Sorte no auge e momento ideal. O universo está limpando o caminho para você.",
+      it: "Massima fortuna. L'universo sta spianando la strada davanti a te."
     },
     quotes: [
       {
@@ -404,14 +407,20 @@ const fortuneTypes = {
         en: "Success is incoming. Since you are destined to win anyway, don't sweat it. Stay in bed and wait for the prize.",
         jp: "勝負はもうついてるよ。どうせうまくいくんだから、汗水たらさずに布団の中で吉報を待とう。",
         fr: "Le succès arrive. Puisque la victoire est assurée, restez allongé et attendez le trophée.",
-        de: "Erfolg ist garantiert. Da du ohnehin gewinnst, bleib einfach im Bett und warte ab."
+        de: "Erfolg ist garantiert. Da du ohnehin gewinnst, bleib einfach im Bett und warte ab.",
+        es: "El éxito está asegurado. Si ya estás destinado a ganar, no sudes la camiseta: quédate acostado esperando el premio.",
+        pt: "Vitória garantida. Já que você vai vencer de qualquer jeito, não se estresse: fique na cama esperando o troféu.",
+        it: "Vittoria assicurata. Visto che il successo è certo, non affannarti: resta a letto e aspetta il premio."
       },
       {
         zh: "恭喜抽到大吉。今天連宇宙都在幫你推車，你唯一能做錯的事，就是吃飽太閒跑去加班。",
         en: "Major luck detected. The entire universe is working for you today. The only mistake you could make is working overtime.",
         jp: "大吉おめでとう。宇宙全体が味方してるよ。唯一のミスは調子に乗って余計な仕事を増やすこと。",
         fr: "Grande chance cosmique. La seule erreur possible serait de faire des heures supplémentaires.",
-        de: "Großes Glück. Das Universum arbeitet für dich. Der einzige Fehler wäre, heute Überstunden zu machen."
+        de: "Großes Glück. Das Universum arbeitet für dich. Der einzige Fehler wäre, heute Überstunden zu machen.",
+        es: "Gran suerte cósmica. Todo conspira a tu favor; el único error que podrías cometer hoy es hacer horas extras.",
+        pt: "Sorte gigante detectada. O universo trabalha por você; o único erro possível seria inventar de fazer hora extra.",
+        it: "Colpo di fortuna assoluto. Il cosmo lavora per te; l'unico errore che puoi fare è metterti a fare straordinari."
       }
     ]
   },
@@ -421,7 +430,10 @@ const fortuneTypes = {
       zh: "穩中求進，時機成熟。保持目前的節奏即可安然收穫。",
       jp: "順調な兆し。今のペースを崩さず、着実に進めば吉。",
       fr: "Tendance positive et stable. Laissez les choses mûrir doucement.",
-      de: "Stabile Entwicklung. Lass die Dinge in Ruhe reifen."
+      de: "Stabile Entwicklung. Lass die Dinge in Ruhe reifen.",
+      es: "Tendencia positiva y constante. Todo fluirá sin mayores sobresaltos.",
+      pt: "Tendência estável e positiva. Resultados favoráveis chegarão com naturalidade.",
+      it: "Tendenza serena e positiva. I frutti arriveranno senza sforzi eccessivi."
     },
     quotes: [
       {
@@ -429,14 +441,20 @@ const fortuneTypes = {
         en: "Things look decent, but don't ruin it by starting new projects. Take a deep breath and enjoy a cup of milk tea.",
         jp: "順調だけど、張り切って新しい仕事を増やさないで。せっかく息が抜けるんだからお茶でも飲もう。",
         fr: "Tout va bien, n'allez pas tout gâcher en créant de nouveaux problèmes. Prenez une pause.",
-        de: "Alles läuft glatt. Verdirb es nicht mit blindem Aktionismus. Gönn dir lieber einen Snack."
+        de: "Alles läuft glatt. Verdirb es nicht mit blindem Aktionismus. Gönn dir lieber einen Snack.",
+        es: "Todo va bien, pero no lo estropees inventando trabajo extra. Respira hondo y tómate un café.",
+        pt: "As coisas vão bem, mas não estrague inventando novos projetos. Respire fundo e aproveite um lanche.",
+        it: "Tutto fila liscio, ma non rovinare tutto cercandoti nuovi guai. Rilassati e prenditi un buon caffè."
       },
       {
         zh: "運氣在幫你兜底，所以不用像無頭蒼蠅一樣亂轉。放輕鬆，事情自己會找到出路。",
         en: "Luck is covering your back. Stop running around like a headless chicken. Relax, things resolve themselves.",
         jp: "運が味方してくれてるから、バタバタ焦る必要なし。深呼吸して成り行きを見守ろう。",
         fr: "La chance vous protège. Arrêtez de courir partout et laissez la poussière retomber.",
-        de: "Das Schicksal hält dir den Rücken frei. Entspann dich, die Dinge fügen sich von selbst."
+        de: "Das Schicksal hält dir den Rücken frei. Entspann dich, die Dinge fügen sich von selbst.",
+        es: "La suerte te cubre la espalda. Deja de correr como pollo sin cabeza; todo se acomodará solo.",
+        pt: "A sorte protege você. Pare de correr feito barata tonta; os problemas se resolverão sozinhos.",
+        it: "La fortuna ti copre le spalle. Smettila di agitarti come una trottola: le cose si sistemeranno da sole."
       }
     ]
   },
@@ -446,7 +464,10 @@ const fortuneTypes = {
       zh: "按兵不動，靜觀其變。現在硬衝只會碰一鼻子灰，把力氣省下來。",
       jp: "今は待機の時。無理に動けば裏目に出ます。体力を温存しましょう。",
       fr: "Période d'attente. Forcer le destin ne mènera qu'à l'épuisement.",
-      de: "Zeit zum Abwarten. Wer jetzt drängt, verliert nur Energie."
+      de: "Zeit zum Abwarten. Wer jetzt drängt, verliert nur Energie.",
+      es: "Momento de espera. Forzar las cosas ahora saldrá mal; mejor ahorra energía.",
+      pt: "Fase de espera. Forçar a barra agora vai dar errado; poupe suas energias.",
+      it: "Momento di attesa. Forzare le cose adesso si ritorcerà contro; conserva le energie."
     },
     quotes: [
       {
@@ -454,14 +475,20 @@ const fortuneTypes = {
         en: "The universe officially orders you to do literally nothing today. Stay home, nap, and save your energy.",
         jp: "宇宙が『今日は何もしないでよし』と公認してくれたよ。布団に戻って二度寝しよう。",
         fr: "L'univers vous ordonne officiellement de ne rien faire. Restez au lit et économisez votre énergie.",
-        de: "Das Universum befiehlt dir heute Nichtstun. Dreh dich im Bett um und schlaf weiter."
+        de: "Das Universum befiehlt dir heute Nichtstun. Dreh dich im Bett um und schlaf weiter.",
+        es: "El universo te autoriza formalmente a no hacer nada hoy. Quédate en la cama y duerme la siesta.",
+        pt: "O universo oficialmente autorizou você a fazer absolutamente nada hoje. Fique deitado e durma.",
+        it: "L'universo ti ordina ufficialmente di non fare nulla oggi. Resta a letto e schiaccia un pisolino."
       },
       {
         zh: "做多錯多，不做不錯。這不是消極，這是高維度的防守哲學。",
         en: "Doing more causes more mistakes; doing nothing keeps you safe. This isn't laziness, it's advanced defensive strategy.",
         jp: "動けばミスる、動かなければ無傷。サボりじゃないよ、高度な防衛戦略さ。",
         fr: "Moins vous en faites, moins vous ferez d'erreurs. Ce n'est pas de la paresse, c'est de la haute stratégie.",
-        de: "Wer viel macht, macht viele Fehler. Wer nichts tut, ist sicher. Das ist reine Selbsterhaltung."
+        de: "Wer viel macht, macht viele Fehler. Wer nichts tut, ist sicher. Das ist reine Selbsterhaltung.",
+        es: "Quien mucho hace, mucho se equivoca; quien nada hace, se salva. No es pereza, es alta estrategia defensiva.",
+        pt: "Fazer demais gera erros; não fazer nada mantém você seguro. Não é preguiça, é pura estratégia de defesa.",
+        it: "Chi troppo fa, sbaglia; chi non fa nulla, si salva. Non è pigrizia, è un'eccellente strategia difensiva."
       }
     ]
   },
@@ -471,7 +498,10 @@ const fortuneTypes = {
       zh: "暗潮洶湧，小人或陷阱出沒。閉門謝客、守好荷包與時間。",
       jp: "波乱の予感。甘い話や面倒な頼み事には耳を貸さず、引きこもるのが賢明。",
       fr: "Turbulences en vue. Fermez votre porte, refusez les sollicitations et reposez-vous.",
-      de: "Vorsicht geboten. Schließe die Tür, lehne Anfragen ab und halte dich zurück."
+      de: "Vorsicht geboten. Schließe die Tür, lehne Anfragen ab und halte dich zurück.",
+      es: "Turbulencias a la vista. Cierra la puerta, di que no a todo y desconéctate.",
+      pt: "Turbulências à frente. Tranque a porta, recuse pedidos chatos e fique deitado.",
+      it: "Turbolenze in arrivo. Chiudi la porta, rifiuta le richieste e isolati dal mondo."
     },
     quotes: [
       {
@@ -479,14 +509,20 @@ const fortuneTypes = {
         en: "Saying 'No' costs $0 and saves about 40 hours of emotional damage. Pretend you aren't home today.",
         jp: "「お断りします」はゼロ円で言えて、40時間の精神的ダメージを防げる神の言葉だよ。",
         fr: "Dire « non » coûte zéro euro et vous évite 40 heures de regrets. Faites le mort aujourd'hui.",
-        de: "„Nein“ zu sagen kostet nichts und erspart dir 40 Stunden Ärger. Stell dich einfach taub."
+        de: "„Nein“ zu sagen kostet nichts und erspart dir 40 Stunden Ärger. Stell dich einfach taub.",
+        es: "Decir «no» cuesta 0 euros y te ahorra 40 horas de desgaste emocional. Si tocan la puerta, hazte el muerto.",
+        pt: "Dizer «não» custa R$ 0 e poupa 40 horas de estresse desnecessário. Finja que não está em casa.",
+        it: "Dire «no» non costa nulla e ti risparmia 40 ore di esaurimento nervoso. Fai finta di non esserci oggi."
       },
       {
         zh: "外面風大雨大坑又多。今天唯一的生還指南就是：手機靜音、電腦關機、棉被蓋過頭頂。",
         en: "The outside world is a minefield today. Survival guide: mute your phone, close your laptop, pull the blanket over your head.",
         jp: "外は罠だらけ。今日のサバイバル術：スマホをサイレントにして毛布にくるまること。",
         fr: "Le monde extérieur est un piège. Conseil de survie : éteignez votre téléphone et couvrez-vous la tête.",
-        de: "Draußen lauern nur Fallen. Überlebensregel: Handy stumm, Decke über den Kopf."
+        de: "Draußen lauern nur Fallen. Überlebensregel: Handy stumm, Decke über den Kopf.",
+        es: "El mundo exterior es una trampa hoy. Guía de supervivencia: móvil en silencio y manta hasta las cejas.",
+        pt: "O mundo lá fora é um campo minado hoje. Dica de sobrevivência: silencie o celular e cubra a cabeça com o edredom.",
+        it: "Il mondo là fuori è una trappola oggi. Manuale di sopravvivenza: silenzioso al telefono e piumone sulla testa."
       }
     ]
   },
@@ -496,7 +532,10 @@ const fortuneTypes = {
       zh: "成敗由天，莫再執著。放下焦慮，地球少你忙一天也不會毀滅。",
       jp: "執着を手放す時。悩んだところで結果は変わりません。自然の流れに任せましょう。",
       fr: "Lâchez prise. Vos inquiétudes ne changeront rien, laissez faire la nature.",
-      de: "Lass los. Deine Grübeleien ändern nichts am Lauf der Dinge."
+      de: "Lass los. Deine Grübeleien ändern nichts am Lauf der Dinge.",
+      es: "Las cosas escapan a tu control. Suelta la obsesión; el planeta no se va a quebrar porque descanses.",
+      pt: "As coisas estão além do seu controle. Largue a obsessão: o mundo não vai parar se você relaxar hoje.",
+      it: "Le cose vanno oltre il tuo controllo. Lascia andare l'ansia: il mondo continuerà a girare anche senza di te."
     },
     quotes: [
       {
@@ -504,20 +543,26 @@ const fortuneTypes = {
         en: "You complain about being exhausted yet check emails at 2 AM. Put the phone down. The world won't collapse without you.",
         jp: "疲れたと言いながら夜中2時にスマホを見てる君。放り出そう、君がいなくても地球は回るよ。",
         fr: "Vous dites être épuisé mais vérifiez vos messages à 2h du matin. Déconnectez. Le monde continuera de tourner.",
-        de: "Du jammerst über Stress und starrst um 2 Uhr nachts aufs Handy. Leg es weg. Die Welt geht ohne dich nicht unter."
+        de: "Du jammerst über Stress und starrst um 2 Uhr nachts aufs Handy. Leg es weg. Die Welt geht ohne dich nicht unter.",
+        es: "Dices estar agotado pero miras mensajes a las 2 AM. Suelta el móvil: el mundo no va a colapsar sin ti.",
+        pt: "Vive reclamando de cansaço mas fica olhando o celular às 2 da manhã. Larga isso: o mundo sobrevive sem você.",
+        it: "Dici di essere distrutto ma controlli le notifiche alle 2 di notte. Metti giù il telefono: il mondo non crolla mica."
       },
       {
         zh: "胡思亂想是一份 24 小時無休但薪水為 0 的血汗工。請站長小比兔批准你立刻打卡下班。",
         en: "Overthinking is a 24/7 job with zero salary. Station Master Xiaobi officially grants you permission to clock out.",
         jp: "考えすぎは給料ゼロの24時間ブラック労働だよ。駅長小比うさぎが退勤を許可します。",
         fr: "Trop réfléchir est un travail à temps plein non rémunéré. Chef Xiaobi vous ordonne de démissionner maintenant.",
-        de: "Grübeln ist ein unbezahlter 24-Stunden-Job. Stationsleiter Xiaobi entlässt dich hiermit in den Feierabend."
+        de: "Grübeln ist ein unbezahlter 24-Stunden-Job. Stationsleiter Xiaobi entlässt dich hiermit in den Feierabend.",
+        es: "Pensar demasiado es un trabajo 24/7 con sueldo cero. El Jefe Xiaobi te autoriza a fichar la salida ahora mismo.",
+        pt: "Pensar demais é um trabalho de 24h sem salário. O Chefe Xiaobi autoriza você a bater o ponto e ir embora.",
+        it: "Farsi troppi problemi è un lavoro non pagato 24 ore su 24. Il Capostazione Xiaobi ti concede di staccare subito."
       }
     ]
   }
 };
 
-// 3. 英文意象詩（供外語切換時呈現）
+// 3. 英文意象詩（供歐美語言呈現）
 const englishVerses = [
   "Golden notices shine upon the grand gate,\nA destined victor arrives, calm and sedate.\nHorses graze peacefully on fragrant field,\nThe autumn sky announces glory revealed.",
   "Guardians of the land awaken in silent might,\nGuiding the upright through day and night.\nWalk steady and true on your modest way,\nNoble allies ensure you will never stray.",
@@ -525,15 +570,11 @@ const englishVerses = [
   "Spring blossoms tremble beneath storm and rain,\nWhile autumn chrysanthemums endure without pain.\nChoose silent endurance over noisy display,\nSolitude shelters you from decay."
 ];
 
-// 4. 主查詢函式（精準對應 1～384 籤號）
+// 4. 主查詢函式（精準對應 1～384 籤號，支援 8 種語言輸出）
 function getOracleData(signIndex) {
-  // 籤號範圍防呆（1～384）
   const idx = Math.max(1, Math.min(384, parseInt(signIndex) || 1));
-
-  // 正統古籍籤詩原文
   const zhOriginal = traditionalVerses[idx - 1] || traditionalVerses[(idx - 1) % traditionalVerses.length];
 
-  // 決定此籤的吉凶類別
   let typeKey = "GOOD_LUCK";
   const mod = idx % 5;
   if (mod === 1) typeKey = "GREAT_LUCK";
@@ -553,14 +594,20 @@ function getOracleData(signIndex) {
       zh: `第 ${String(idx).padStart(3, '0')} 籤・秘本諸葛神數`,
       jp: `第 ${idx} 籤・諸葛神数秘本`,
       fr: `Signe #${idx} : Oracle Sacré de Zhuge`,
-      de: `Zeichen #${idx} : Zhuge Göttliches Orakel`
+      de: `Zeichen #${idx} : Zhuge Göttliches Orakel`,
+      es: `Signo #${idx} : Oráculo Divino de Zhuge`,
+      pt: `Signo #${idx} : Oráculo Sagrado de Zhuge`,
+      it: `Segno #${idx} : Oracolo Divino di Zhuge`
     },
     verse: {
       en: enPoem,
       zh: zhOriginal,
       jp: zhOriginal + "\n（諸葛武侯神卦原文）",
       fr: enPoem,
-      de: enPoem
+      de: enPoem,
+      es: enPoem,
+      pt: enPoem,
+      it: enPoem
     },
     insight: typeData.insight,
     xiaobi: quoteObj
