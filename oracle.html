@@ -43,13 +43,14 @@
       padding: 30px 16px 60px;
     }
 
-    /* 頂部語言切換列 */
+    /* 頂部語言切換列 (已適配 8 國語言自動包折) */
     .lang-bar {
       width: 100%;
       max-width: 600px;
       display: flex;
       justify-content: flex-end;
-      gap: 8px;
+      flex-wrap: wrap;
+      gap: 6px;
       padding: 0 12px;
       margin-bottom: 20px;
     }
@@ -58,12 +59,12 @@
       background: #ffffff;
       border: 1px solid var(--ll-blue-border);
       border-radius: 20px;
-      padding: 5px 14px;
-      font-size: 0.82rem;
+      padding: 5px 12px;
+      font-size: 0.8rem;
       cursor: pointer;
       color: var(--muted);
       transition: all 0.2s;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .lang-btn.active, .lang-btn:hover {
@@ -141,7 +142,7 @@
       border-radius: 0 10px 10px 0;
     }
 
-    /* 模式切換按鈕組 (數字 / 漢字) */
+    /* 模式切換按鈕組 */
     .mode-tabs {
       display: flex;
       justify-content: center;
@@ -506,13 +507,16 @@
 </head>
 <body>
 
-  <!-- 多國語言切換鈕 -->
+  <!-- 8 國語言切換鈕 -->
   <div class="lang-bar">
     <button class="lang-btn" onclick="setLanguage('en')">EN</button>
     <button class="lang-btn active" onclick="setLanguage('zh')">繁中</button>
     <button class="lang-btn" onclick="setLanguage('jp')">日本語</button>
-    <button class="lang-btn" onclick="setLanguage('fr')">FR</button>
     <button class="lang-btn" onclick="setLanguage('de')">DE</button>
+    <button class="lang-btn" onclick="setLanguage('fr')">FR</button>
+    <button class="lang-btn" onclick="setLanguage('es')">ES</button>
+    <button class="lang-btn" onclick="setLanguage('pt')">PT</button>
+    <button class="lang-btn" onclick="setLanguage('it')">IT</button>
   </div>
 
   <div class="container">
@@ -649,7 +653,7 @@
       return { raw: rawStrokes, val: modStrokes };
     }
 
-    const officialEnBookTitle = "The Little White Rabbit's Useless Notebook: A Sarcastic Gag Journal for Overwhelmed Humans, Students, and Burnout Office Workers (Funny Novelty Notebook)（I held up the national flag）";
+    const officialEnBookTitle = "The Little White Rabbit's Useless Notebook: A Sarcastic Gag Journal for Overwhelmed Humans, Students, and Burnout Office Workers (Funny Novelty Notebook)";
 
     const i18n = {
       en: {
@@ -736,13 +740,67 @@
         kdpUrl: "https://link.amazon/B029TO94d",
         portalTitle: "Zurück zur lazy life. Startseite",
         portalDesc: "Entdecke die energiesparende Hasenwelt, Tischuhr und Tools."
+      },
+      es: {
+        title: "El Oráculo del Conejo Xiaobi",
+        sub: "384 destinos de la legendaria era de los Tres Reinos (Números Divinos de Zhuge)",
+        speech: "<strong>🐰 Jefe de Estación Xiaobi:</strong><br>«¿Quieres una vida acostada sin estrés? Consulta al oráculo.<br><strong>La Regla:</strong> Elige 3 dígitos o 3 palabras. No importa el resultado, echarte una siesta siempre es la decisión correcta.»",
+        cast: "Consultar Oráculo",
+        rand: "Número Aleatorio",
+        legendTitle: "⚔️ ¿Quién es el Maestro Zhuge Liang? (諸葛孔明)",
+        legendDesc: "El estratega más brillante de la historia china (181–234 d.C.). Famoso por predecir el clima, 'tomar prestado el viento del sureste' y resolver crisis con pura inteligencia. Diseñó este sistema de 384 presagios como una brújula matemática del destino.",
+        legendTip: "🐰 <strong>El aviso realista de Xiaobi:</strong> «Era un genio cósmico, pero trabajaba 20 horas al día hasta el colapso total. Consulta su oráculo sagrado, pero jamás copies sus horas extras.»",
+        verseLbl: "El Verso del Oráculo",
+        insightLbl: "Consejo de Vida",
+        ctaDesc: "Apunta esta revelación en tu cuaderno antes de que el destino cambie de opinión.",
+        ctaBtn: "Ver el cuaderno de Xiaobi en Amazon",
+        kdpUrl: "https://link.amazon/B072n2eaF",
+        portalTitle: "Volver a la portada de lazy life.",
+        portalDesc: "Descubre el universo de baja energía de Xiaobi y herramientas de escritorio."
+      },
+      pt: {
+        title: "O Oráculo do Coelho Xiaobi",
+        sub: "384 destinos da era ancestral dos Três Reinos da China (Números Divinos de Zhuge)",
+        speech: "<strong>🐰 Chefe de Estação Xiaobi:</strong><br>«Quer viver deitado em paz absoluta? Consulte o oráculo.<br><strong>A Regra:</strong> Escolha 3 dígitos ou 3 palavras. Seja qual for o presságio, tirar um cochilo nunca é um erro.»",
+        cast: "Tirar a Sorte",
+        rand: "Sorte Aleatória",
+        legendTitle: "⚔️ Quem foi o Mestre Zhuge Liang? (諸葛孔明)",
+        legendDesc: "O maior estrategista militar da história chinesa (181–234 d.C.). Capaz de prever batalhas e o clima com precisão cirúrgica. Criou este oráculo lendário de 384 linhas combinando matemática ancestral e as leis do universo.",
+        legendTip: "🐰 <strong>Toque de Realidade do Xiaobi:</strong> «Ele era um gênio cósmico, mas morreu literalmente de tanto trabalhar 20 horas por dia. Use o oráculo dele, mas nunca imite a rotina de trabalho dele.»",
+        verseLbl: "O Verso Sagrado",
+        insightLbl: "Conselho para a Vida",
+        ctaDesc: "Anote esse aviso no seu caderno antes que o destino mude de ideia.",
+        ctaBtn: "Conhecer o caderno do Xiaobi na Amazon",
+        kdpUrl: "https://link.amazon/B072n2eaF",
+        portalTitle: "Voltar ao portal lazy life.",
+        portalDesc: "Explore o universo sem estresse do Xiaobi e ferramentas relaxantes."
+      },
+      it: {
+        title: "L'Oracolo del Coniglio Xiaobi",
+        sub: "384 responsi dell'era dei Tre Regni dell'antica Cina (Numeri Divini di Zhuge)",
+        speech: "<strong>🐰 Capostazione Xiaobi:</strong><br>«Vuoi goderti la vita sdraiata in santa pace? Interroga l'oracolo.<br><strong>La Regola:</strong> Scegli 3 cifre o 3 parole. Qualunque sia il responso, farsi un bel riposino è sempre la scelta giusta.»",
+        cast: "Interroga l'Oracolo",
+        rand: "Numero Casuale",
+        legendTitle: "⚔️ Chi è il Maestro Zhuge Liang? (諸葛孔明)",
+        legendDesc: "La mente strategica più brillante dell'antica Cina (181–234 d.C.). Maestro nell'arte della guerra e nella lettura del cosmo. Ha codificato questi 384 responsi matematici per decifrare il destino e i cicli della natura.",
+        legendTip: "🐰 <strong>Consiglio rilassato di Xiaobi:</strong> «Era un genio assoluto, ma lavorava 20 ore al giorno fino a consumarsi. Ascolta il suo oracolo, ma non azzardarti a fare i suoi stessi orari di lavoro.»",
+        verseLbl: "Il Verso dell'Oracolo",
+        insightLbl: "Consiglio di Vita",
+        ctaDesc: "Scrivi questo avviso nel tuo taccuino prima che il destino ci ripensi.",
+        ctaBtn: "Scopri il taccuino di Xiaobi su Amazon",
+        kdpUrl: "https://link.amazon/B072n2eaF",
+        portalTitle: "Torna alla home di lazy life.",
+        portalDesc: "Scopri il mondo a basso consumo energetico di Xiaobi e i widget relax."
       }
     };
 
     function setLanguage(lang) {
       currentLang = lang;
       document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-      const activeBtn = Array.from(document.querySelectorAll('.lang-btn')).find(b => b.textContent.toLowerCase().includes(lang === 'zh' ? '繁中' : lang));
+      const activeBtn = Array.from(document.querySelectorAll('.lang-btn')).find(b => {
+        const txt = b.textContent.trim().toLowerCase();
+        return lang === 'zh' ? txt.includes('繁中') : txt === lang.toLowerCase();
+      });
       if (activeBtn) activeBtn.classList.add('active');
 
       const dict = i18n[lang] || i18n['en'];
@@ -764,7 +822,6 @@
       ctaBtn.textContent = dict.ctaBtn || "前往 Amazon 收藏《小比兔的廢物筆記本》";
       ctaBtn.href = dict.kdpUrl || "https://link.amazon/B072n2eaF";
 
-      // 同步切換底部回首頁卡片的文字
       document.getElementById('portalLinkTitle').textContent = dict.portalTitle;
       document.getElementById('portalLinkDesc').textContent = dict.portalDesc;
 
