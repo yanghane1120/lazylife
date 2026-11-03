@@ -11,10 +11,10 @@
   <link rel="manifest" href="manifest.json">
   <style>
     :root {
-      --ll-blue: #0ea5e9;          /* 水藍主色 */
-      --ll-blue-hover: #0284c7;    /* 水藍深色微調 */
-      --ll-blue-light: #e0f2fe;    /* 柔和水藍底色 */
-      --ll-blue-border: #bae6fd;   /* 清新水藍邊框 */
+      --ll-blue: #0ea5e9;         /* 水藍主色 */
+      --ll-blue-hover: #0284c7;   /* 水藍深色微調 */
+      --ll-blue-light: #e0f2fe;   /* 柔和水藍底色 */
+      --ll-blue-border: #bae6fd;  /* 清新水藍邊框 */
       --bg: #f0f7ff;
       --card-bg: #ffffff;
       --text: #1e293b;
@@ -201,12 +201,42 @@
       font-weight: 600;
       padding-right: 4px;
     }
+    
+    /* 影片展示區塊 (16:9) */
+    .video-wrapper {
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 4px;
+      border: 1px solid var(--ll-blue-border);
+      box-shadow: 0 4px 14px rgba(14, 165, 233, 0.06);
+      background: #000;
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .video-caption {
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
 
     footer {
       margin-top: 16px;
       font-size: 12px;
       color: #94a3b8;
       letter-spacing: 0.5px;
+      line-height: 1.5;
     }
   </style>
 </head>
@@ -238,6 +268,7 @@
     <!-- 工具與出版品 -->
     <div id="secToolsTitle" class="section-title">工具與出版品</div>
     <div class="links-container">
+      
       <!-- 每日躺平時鐘 -->
       <a href="https://yanghane1120.github.io/xiaobi-clock/xiaobi-card/" class="hub-card" target="_blank">
         <div class="card-thumb">
@@ -261,8 +292,20 @@
         </div>
         <div class="arrow">›</div>
       </a>
+      
+      <!-- ★ 新增：小比兔筆記本專區影片展示 ★ -->
+      <div style="margin-top: 12px;"></div> <!-- 空間區隔 -->
+      <div class="video-wrapper">
+        <iframe 
+          src="https://www.youtube.com/embed/clPbsZ7oYuI?rel=0&loop=1&playlist=clPbsZ7oYuI" 
+          title="Little Rabbit's Notes - Inside Flipbook" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div id="videoCaption" class="video-caption">📖 筆記本內頁：實體翻頁動畫與手帳展示</div>
 
-      <!-- 筆記本手帳 -->
+      <!-- 筆記本手帳直達連結 -->
       <a id="bookLink" href="https://www.amazon.com/dp/B0HNWSQ6Z4" class="hub-card" target="_blank">
         <div class="card-thumb">
           <img src="images/xiaobi-12.png" alt="Book">
@@ -320,7 +363,6 @@
     <div class="links-container">
       <a href="https://yanghane1120.github.io/hamagm/" class="hub-card" target="_blank">
         <div class="card-thumb">
-          <!-- 直接讀取根目錄的 cat-greeting.jpg -->
           <img src="cat-greeting.jpg" alt="HAMAGM Ragdoll Cat" onerror="if (this.src.indexOf('images/') === -1) { this.src='images/cat-greeting.jpg'; }">
         </div>
         <div class="card-body">
@@ -331,8 +373,10 @@
       </a>
     </div>
 
-    <footer>
-      © 2026 lazy life. All rights reserved.
+    <!-- ★ 修改：底部 Footer 加上多語系版權與 Amazon 聯盟宣告 ★ -->
+    <footer id="footerText">
+      © 2026 lazy life. All rights reserved.<br>
+      身為 Amazon 聯盟行銷夥伴，本站可能自符合條件的購買中獲得收益。
     </footer>
   </div>
 
@@ -348,13 +392,15 @@
         clockDesc: "桌面陪伴、隨機抽卡與防內耗計時工具",
         oracleTitle: "小比兔諸葛神算",
         oracleDesc: "傳承三國諸葛神數・384 爻脫力哲學與命運指引",
+        videoCaption: "📖 筆記本內頁：實體翻頁動畫與手帳展示",
         bookTitle: "小比兔的廢物筆記本",
         bookDesc: "Amazon KDP 限量小誌，專門用來記滿廢話",
         ytDesc: "@HeyXiaoBi｜10秒搞笑短劇與日常動畫",
         igDesc: "最新圖文短漫、日常隨筆與限時動態",
         fbDesc: "追蹤小比兔官方最新創作動態與交流",
         partnerTitle: "HAMAGM 萬用動物市集",
-        partnerDesc: "哈瑪布偶貓店長鎮店！精選全球好物、科技選品與生活日常"
+        partnerDesc: "哈瑪布偶貓店長鎮店！精選全球好物、科技選品與生活日常",
+        footerText: "© 2026 lazy life. All rights reserved.<br>身為 Amazon 聯盟行銷夥伴，本站可能自符合條件的購買中獲得收益。"
       },
       en: {
         subtitle: "A Low-Energy World with Xiaobi the Rabbit",
@@ -366,13 +412,15 @@
         clockDesc: "Desktop companion, quote card draws, and burnout-free timer.",
         oracleTitle: "The Rabbit Oracle",
         oracleDesc: "Ancient Zhuge Divine Numbers. Cast 3 digits or words for fates & wisdom.",
+        videoCaption: "📖 Inside The Notebook: Physical Flipbook Animation",
         bookTitle: "Little Rabbit's Notes",
         bookDesc: "Published on Amazon KDP. A notebook made strictly for useless thoughts.",
         ytDesc: "@HeyXiaoBi | 10-second funny skits & daily comics",
         igDesc: "Webcomics, daily sketches & updates @ldx779",
         fbDesc: "Official creator news and brand community",
         partnerTitle: "HAMAGM Animal Bazaar",
-        partnerDesc: "Hosted by Store Manager Hama the Ragdoll Cat! Curated gadgets & home gear."
+        partnerDesc: "Hosted by Store Manager Hama the Ragdoll Cat! Curated gadgets & home gear.",
+        footerText: "© 2026 lazy life. All rights reserved.<br>As an Amazon Associate I earn from qualifying purchases."
       },
       ja: {
         subtitle: "シャオビの省エネな日常ワールド",
@@ -384,13 +432,15 @@
         clockDesc: "デスクトップのお供に。ランダム名言ガチャとタイマー機能。",
         oracleTitle: "小比うさぎの神算占い",
         oracleDesc: "諸葛神数に学ぶ384のお告げ。数字や漢字から占う脱力哲学と運命。",
+        videoCaption: "📖 ノートの中身：パラパラ漫画アニメーション紹介",
         bookTitle: "小さなウサギの無駄ノート",
         bookDesc: "Amazon KDPにて発売中。くだらないメモを残すための一冊。",
         ytDesc: "@HeyXiaoBi｜10秒ショートギャグ＆日常アニメ",
         igDesc: "最新イラスト、短編漫画、日常のスケッチ @ldx779",
         fbDesc: "公式最新情報とコミュニティ",
         partnerTitle: "HAMAGM 動物マーケット",
-        partnerDesc: "ラグドールのハマ店長がお出迎え！厳選ガジェット＆便利グッズ満載。"
+        partnerDesc: "ラグドールのハマ店長がお出迎え！厳選ガジェット＆便利グッズ満載。",
+        footerText: "© 2026 lazy life. All rights reserved.<br>Amazonアソシエイトとして、適格販売により収入を得ています。"
       },
       de: {
         subtitle: "Die energiesparende Welt des kleinen Hasen",
@@ -402,13 +452,15 @@
         clockDesc: "Schreibtisch-Begleiter mit Zufallskarten und Anti-Burnout-Timer.",
         oracleTitle: "Das Orakel des kleinen Hasen",
         oracleDesc: "384 Schicksale nach Zhuge. Wähle 3 Ziffern für pessimistische Weisheiten.",
+        videoCaption: "📖 Daumenkino-Animation & Buchseiten-Vorschau",
         bookTitle: "Der nutzlose Notizblock des kleinen weißen Hasen",
         bookDesc: "Auf Amazon KDP erschienen. Perfekt für all die unnützen Gedanken.",
         ytDesc: "@HeyXiaoBi | 10-Sekunden-Sketche & Comics",
         igDesc: "Webcomics, Skizzen & Updates @ldx779",
         fbDesc: "Offizielle Neuigkeiten & Community",
         partnerTitle: "HAMAGM Animal Bazaar",
-        partnerDesc: "Geführt von Kater Hama! Ausgewählte Gadgets & Lifestyle-Produkte."
+        partnerDesc: "Geführt von Kater Hama! Ausgewählte Gadgets & Lifestyle-Produkte.",
+        footerText: "© 2026 lazy life. Alle Rechte vorbehalten.<br>Als Amazon-Partner verdiene ich an qualifizierten Verkäufen."
       },
       fr: {
         subtitle: "Le monde à faible énergie du petit lapin blanc",
@@ -420,13 +472,15 @@
         clockDesc: "Compagnon de bureau, cartes de citations et minuteur anti-stress.",
         oracleTitle: "L'Oracle du Petit Lapin",
         oracleDesc: "384 destins issus de l'oracle de Zhuge. Révélez votre prophétie paresseuse.",
+        videoCaption: "📖 Aperçu : Animation folioscope (Flipbook) du carnet",
         bookTitle: "Le carnet inutile du petit lapin blanc",
         bookDesc: "Disponible sur Amazon KDP. Pour noter tout ce qui n'a aucune importance.",
         ytDesc: "@HeyXiaoBi | Skits de 10 secondes et animations",
         igDesc: "Bandes dessinées, croquis et actus @ldx779",
         fbDesc: "Actualités officielles et communauté",
         partnerTitle: "Bazar HAMAGM",
-        partnerDesc: "Géré par le chat Hama ! Sélection de gadgets high-tech et du quotidien."
+        partnerDesc: "Géré par le chat Hama ! Sélection de gadgets high-tech et du quotidien.",
+        footerText: "© 2026 lazy life. Tous droits réservés.<br>En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises."
       }
     };
 
@@ -442,6 +496,7 @@
       document.getElementById('clockDesc').innerText = data.clockDesc;
       document.getElementById('oracleTitle').innerText = data.oracleTitle;
       document.getElementById('oracleDesc').innerText = data.oracleDesc;
+      document.getElementById('videoCaption').innerText = data.videoCaption;
       document.getElementById('bookTitle').innerText = data.bookTitle;
       document.getElementById('bookDesc').innerText = data.bookDesc;
       document.getElementById('ytDesc').innerText = data.ytDesc;
@@ -449,6 +504,7 @@
       document.getElementById('fbDesc').innerText = data.fbDesc;
       document.getElementById('partnerTitle').innerText = data.partnerTitle;
       document.getElementById('partnerDesc').innerText = data.partnerDesc;
+      document.getElementById('footerText').innerHTML = data.footerText;
 
       const btns = document.querySelectorAll('.lang-btn');
       const langOrder = ['zh', 'en', 'ja', 'de', 'fr'];
