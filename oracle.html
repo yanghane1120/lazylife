@@ -275,7 +275,7 @@
       background: var(--ll-blue-light);
     }
 
-    /* 諸葛孔明傳奇吹牛卡片 */
+    /* 諸葛孔明傳奇介紹卡片 */
     .legend-box {
       background: #ffffff;
       border: 1px solid var(--ll-blue-border);
@@ -468,9 +468,9 @@
 
       <!-- 漢字輸入框 (預設隱藏) -->
       <div id="charInputsWrapper" class="inputs-wrapper" style="display: none;">
-        <input type="text" id="c1" class="input-box" placeholder="佑" maxlength="1">
-        <input type="text" id="c2" class="input-box" placeholder="咱" maxlength="1">
-        <input type="text" id="c3" class="input-box" placeholder="統" maxlength="1">
+        <input type="text" id="c1" class="input-box" placeholder="佑" maxlength="2">
+        <input type="text" id="c2" class="input-box" placeholder="咱" maxlength="2">
+        <input type="text" id="c3" class="input-box" placeholder="統" maxlength="2">
       </div>
 
       <div id="strokeDetails" class="stroke-details"></div>
@@ -480,7 +480,7 @@
         <div id="xiaobiSpeech" class="chat-bubble">
           <strong>🐰 站長小比兔：</strong><br>
           「想要過上更完美的躺平生活嗎？來算命吧！<br>
-          <strong>遊戲規則：</strong>心裡默想問題，選定 3 個數字或輸入 3 個中文字測字，也可隨機搖號。不管卦象說什麼，先睡個午覺總是沒錯的。」
+          <strong>遊戲規則：</strong>心裡默想問題，選定 3 個數字或輸入 3 個中文字測字，也可隨機搖號。不管卦象說什麼，先睡個午搞總是沒錯的。」
         </div>
         <div class="rabbit-img-wrap">
           <img src="images/xiaobi-08.png" alt="Xiaobi Lying Flat" class="rabbit-img" onerror="if (this.src.indexOf('images/') !== -1) { this.src='xiaobi-08.png'; }">
@@ -565,10 +565,8 @@
       return { raw: rawStrokes, val: modStrokes };
     }
 
-    // 官方指定全名英文書名
     const officialEnBookTitle = "The Little White Rabbit's Useless Notebook: A Sarcastic Gag Journal for Overwhelmed Humans, Students, and Burnout Office Workers (Funny Novelty Notebook)（I held up the national flag）";
 
-    // 5 國語言字典 (含孔明神化吹牛與小比兔吐槽)
     const i18n = {
       en: {
         title: "The Rabbit Oracle",
@@ -660,7 +658,6 @@
       document.getElementById('btnCast').textContent = dict.cast;
       document.getElementById('btnRandom').textContent = dict.rand;
       
-      // 更新孔明傳奇介紹
       document.getElementById('legendTitle').innerHTML = dict.legendTitle;
       document.getElementById('legendDesc').innerHTML = dict.legendDesc;
       document.getElementById('legendTip').innerHTML = dict.legendTip;
@@ -680,17 +677,47 @@
       }
     }
 
+    // 智慧跳格修復：完美相容中文輸入法 (IME 選字) 與 Backspace 回退
     function setupAutoJump(idArray) {
       idArray.forEach((id, idx) => {
         const el = document.getElementById(id);
+        let isComposing = false;
+
+        el.addEventListener('compositionstart', () => {
+          isComposing = true;
+        });
+
+        el.addEventListener('compositionend', () => {
+          isComposing = false;
+          handleJump();
+        });
+
         el.addEventListener('input', () => {
-          if (el.value.length >= 1) {
-            el.value = el.value.slice(-1);
-            if (idx < idArray.length - 1) document.getElementById(idArray[idx + 1]).focus();
+          if (!isComposing) {
+            handleJump();
           }
         });
+
+        el.addEventListener('keydown', (e) => {
+          if (e.key === 'Backspace' && el.value.length === 0 && idx > 0) {
+            const prevEl = document.getElementById(idArray[idx - 1]);
+            prevEl.focus();
+          }
+        });
+
+        function handleJump() {
+          if (el.value.length >= 1) {
+            el.value = Array.from(el.value).pop();
+            if (idx < idArray.length - 1) {
+              const nextEl = document.getElementById(idArray[idx + 1]);
+              nextEl.focus();
+              nextEl.select();
+            }
+          }
+        }
       });
     }
+
     setupAutoJump(['d1', 'd2', 'd3']);
     setupAutoJump(['c1', 'c2', 'c3']);
 
