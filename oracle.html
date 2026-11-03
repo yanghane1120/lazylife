@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rabbit Oracle | Zhuge Divine Numbers - lazy life.</title>
+  <style>
+    :root {
+      --bg: #f9f9fb;
+      --card-bg: #ffffff;
+      --text: #1a1a1a;
+      --muted: #666666;
+      --border: #e0e0e0;
+      --accent: #111111;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 620px;
+      text-align: center;
+    }
+
+    .brand-tag {
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 32px;
+    }
+
+    /* Input & Dice Section */
+    .input-section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      margin-bottom: 32px;
+    }
+
+    .digits-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .digit-box {
+      width: 70px;
+      height: 80px;
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-align: center;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      background: #fafafa;
+      color: var(--text);
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .digit-box:focus {
+      border-color: var(--accent);
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    button {
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 30px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+      border: 1px solid var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: #333333;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #f0f0f0;
+    }
+
+    /* Result Card */
+    .result-card {
+      display: none;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: left;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+      animation: fadeIn 0.4s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .sign-badge {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      background: #000;
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .oracle-verse {
+      font-family: "Georgia", serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #2c2c2c;
+      font-style: italic;
+      border-left: 3px solid #000;
+      padding-left: 16px;
+      margin-bottom: 24px;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .guidance-box {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #444;
+      margin-bottom: 24px;
+    }
+
+    .xiaobi-box {
+      background: #f5f5f7;
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px dashed #d0d0d5;
+      margin-bottom: 28px;
+    }
+
+    .xiaobi-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .xiaobi-quote {
+      font-size: 0.92rem;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    .cta-container {
+      text-align: center;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .cta-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: #000;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 20px;
+      transition: background 0.2s;
+    }
+
+    .cta-btn:hover {
+      background: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="brand-tag">lazy life.</div>
+    <h1>The Rabbit Oracle</h1>
+    <p class="subtitle">Ancient Zhuge Divine Numbers (諸葛神算) translated into 384 fates.<br>Focus on your query and choose 3 digits (0–9).</p>
+
+    <!-- Inputs -->
+    <div class="input-section">
+      <div class="digits-wrapper">
+        <input type="number" id="d1" class="digit-box" min="0" max="9" placeholder="3" maxlength="1">
+        <input type="number" id="d2" class="digit-box" min="0" max="9" placeholder="8" maxlength="1">
+        <input type="number" id="d3" class="digit-box" min="0" max="9" placeholder="4" maxlength="1">
+      </div>
+
+      <div class="btn-group">
+        <button class="btn-primary" onclick="castOracle()">Cast The Oracle</button>
+        <button class="btn-secondary" onclick="randomizeFate()">Random Fate</button>
+      </div>
+    </div>
+
+    <!-- Divination Result -->
+    <div id="resultCard" class="result-card">
+      <span id="signBadge" class="sign-badge">SIGN #1</span>
+      <h2 id="cardTitle" class="card-title">Heaven & Creation (乾為天)</h2>
+
+      <div class="section-label">The Oracle Verse</div>
+      <div id="oracleVerse" class="oracle-verse">
+        A bright star shines upon the gate,<br>
+        Fortune arrives, though seemingly late.<br>
+        Do not hurry, do not fret,<br>
+        The grandest path is opening yet.
+      </div>
+
+      <div class="section-label">Insight & Guidance</div>
+      <div id="oracleGuidance" class="guidance-box">
+        Strong momentum surrounds your inquiry. Proceed with quiet confidence, but maintain steady discipline.
+      </div>
+
+      <div class="xiaobi-box">
+        <div class="xiaobi-title">🐰 Xiaobi's Pessimistic Wisdom</div>
+        <div id="xiaobiWisdom" class="xiaobi-quote">
+          "The stars promised a grand future, but they conveniently forgot to mention whether getting out of bed is mandatory."
+        </div>
+      </div>
+
+      <div class="cta-container">
+        <div class="cta-desc">Record this warning in your official low-content notebook before fate changes its mind.</div>
+        <a href="https://link.amazon/B09m4WMbS" target="_blank" class="cta-btn">Get Little Rabbit's Notes on Amazon</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 自動跳格設定
+    const inputs = [document.getElementById('d1'), document.getElementById('d2'), document.getElementById('d3')];
+    inputs.forEach((input, idx) => {
+      input.addEventListener('input', () => {
+        if (input.value.length >= 1) {
+          input.value = input.value.slice(-1);
+          if (idx < inputs.length - 1) inputs[idx + 1].focus();
+        }
+      });
+    });
+
+    // 隨機搖號
+    function randomizeFate() {
+      inputs.forEach(input => {
+        input.value = Math.floor(Math.random() * 10);
+      });
+      castOracle();
+    }
+
+    // 諸葛神數 384 爻籤演算法
+    function castOracle() {
+      const v1 = parseInt(inputs[0].value) || 0;
+      const v2 = parseInt(inputs[1].value) || 0;
+      const v3 = parseInt(inputs[2].value) || 0;
+
+      // 百十個位組合成三位數，以 384 籤為循環基準
+      const combined = (v1 * 100) + (v2 * 10) + v3;
+      const signIndex = ((combined <= 0 ? 384 : combined - 1) % 384) + 1;
+
+      renderSign(signIndex);
+    }
+
+    // 範例籤資料庫與動態模板生成
+    const sampleThemes = [
+      {
+        title: "Heaven & Momentum",
+        verse: "A sudden wind clears the autumn mist,\nA hidden path appears as wished.\nStride forward now without delay,\nFortune guards your open way.",
+        insight: "Direct action brings breakthroughs. Clarity replaces recent confusion.",
+        xiaobi: "Success is incoming. Try not to ruin it by overthinking during lunch."
+      },
+      {
+        title: "Patience by the Stream",
+        verse: "Cold waters run through mountain stone,\nPatience is best kept when alone.\nWait for the thaw of spring to bloom,\nFor haste only welcomes early doom.",
+        insight: "Hold your position. Rushing will waste resources and lead to unnecessary friction.",
+        xiaobi: "Doing nothing is officially the recommended cosmic strategy today. Enjoy it."
+      },
+      {
+        title: "The Silver Lantern",
+        verse: "Night falls deep upon the road,\nA steady light relieves the load.\nListen to quiet words from a friend,\nBefore this winding path can bend.",
+        insight: "Valuable guidance is nearby. Seek counsel from someone practical rather than emotional.",
+        xiaobi: "Everyone has advice for you. Most of it is bad, but at least this one is harmless."
+      },
+      {
+        title: "Gathering at the Gate",
+        verse: "Clouds gather high above the tree,\nThings are not what they seem to be.\nSecure your borders, check your store,\nBefore inviting trouble to your door.",
+        insight: "Protect your assets and energy. Guard against boundary-crossers or hasty commitments.",
+        xiaobi: "Saying 'no' costs zero dollars and saves approximately 40 hours of regret."
+      }
+    ];
+
+    function renderSign(signIndex) {
+      const theme = sampleThemes[(signIndex - 1) % sampleThemes.length];
+
+      document.getElementById('signBadge').textContent = `SIGN #${signIndex} OF 384`;
+      document.getElementById('cardTitle').textContent = `${theme.title}`;
+      document.getElementById('oracleVerse').innerHTML = theme.verse.replace(/\n/g, '<br>');
+      document.getElementById('oracleGuidance').textContent = theme.insight;
+      document.getElementById('xiaobiWisdom').textContent = `"${theme.xiaobi}"`;
+
+      const resultCard = document.getElementById('resultCard');
+      resultCard.style.display = 'block';
+      resultCard.scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
