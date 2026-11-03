@@ -157,11 +157,12 @@
       background: var(--ll-blue-light);
       border-radius: 12px;
       overflow: hidden;
+      padding: 3px;
     }
     .card-thumb img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
 
     .card-body {
@@ -318,13 +319,13 @@
       </a>
     </div>
 
-    <!-- 官方社群平台 -->
+    <!-- 官方社群平台 (已更換為趴姿 icon-512，防裁切) -->
     <div id="secSocialTitle" class="section-title">官方社群平台</div>
     <div class="links-container">
       <!-- YouTube -->
       <a href="https://www.youtube.com/@HeyXiaoBi" class="hub-card" target="_blank">
         <div class="card-thumb">
-          <img src="images/xiaobi-10.png" alt="YouTube">
+          <img src="icon-512.png" alt="YouTube" onerror="if (this.src.indexOf('images/') === -1) { this.src='images/icon-512.png'; }">
         </div>
         <div class="card-body">
           <div class="card-title">YouTube <span class="badge yt">Shorts</span></div>
@@ -336,7 +337,7 @@
       <!-- Instagram -->
       <a href="https://www.instagram.com/ldx779" class="hub-card" target="_blank">
         <div class="card-thumb">
-          <img src="images/xiaobi-15.png" alt="Instagram">
+          <img src="icon-512.png" alt="Instagram" onerror="if (this.src.indexOf('images/') === -1) { this.src='images/icon-512.png'; }">
         </div>
         <div class="card-body">
           <div class="card-title">Instagram <span class="badge ig">@ldx779</span></div>
@@ -348,7 +349,7 @@
       <!-- Facebook -->
       <a href="https://www.facebook.com/yanghane2" class="hub-card" target="_blank">
         <div class="card-thumb">
-          <img src="images/xiaobi-09.png" alt="Facebook">
+          <img src="icon-512.png" alt="Facebook" onerror="if (this.src.indexOf('images/') === -1) { this.src='images/icon-512.png'; }">
         </div>
         <div class="card-body">
           <div class="card-title">Facebook <span class="badge fb">Meta</span></div>
