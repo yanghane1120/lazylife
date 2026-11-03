@@ -234,6 +234,18 @@
         <div class="arrow">›</div>
       </a>
 
+      <!-- 小比兔諸葛神算 (新整合入口) -->
+      <a href="oracle.html" class="hub-card">
+        <div class="card-thumb">
+          <img src="images/xiaobi-08.png" alt="Oracle" onerror="if (this.src.indexOf('images/') !== -1) { this.src='xiaobi-08.png'; }">
+        </div>
+        <div class="card-body">
+          <div class="card-title"><span id="oracleTitle">小比兔諸葛神算</span> <span class="badge">Tool</span></div>
+          <div id="oracleDesc" class="card-desc">傳承三國諸葛神數・384 爻脫力哲學與命運指引</div>
+        </div>
+        <div class="arrow">›</div>
+      </a>
+
       <!-- 筆記本手帳 -->
       <a id="bookLink" href="https://www.amazon.com/dp/B0HNWSQ6Z4" class="hub-card" target="_blank">
         <div class="card-thumb">
@@ -301,6 +313,8 @@
         secSocial: "官方社群平台",
         clockTitle: "每日躺平時鐘 & 番茄鐘",
         clockDesc: "桌面陪伴、隨機抽卡與防內耗計時工具",
+        oracleTitle: "小比兔諸葛神算",
+        oracleDesc: "傳承三國諸葛神數・384 爻脫力哲學與命運指引",
         bookTitle: "小比兔的廢物筆記本",
         bookDesc: "Amazon KDP 限量小誌，專門用來記滿廢話",
         ytDesc: "@HeyXiaoBi｜10秒搞笑短劇與日常動畫",
@@ -314,6 +328,8 @@
         secSocial: "Official Social Media",
         clockTitle: "Lying Flat Desk Clock & Pomodoro",
         clockDesc: "Desktop companion, quote card draws, and burnout-free timer.",
+        oracleTitle: "The Rabbit Oracle",
+        oracleDesc: "Ancient Zhuge Divine Numbers. Cast 3 digits or words for fates & wisdom.",
         bookTitle: "Little Rabbit's Notes",
         bookDesc: "Published on Amazon KDP. A notebook made strictly for useless thoughts.",
         ytDesc: "@HeyXiaoBi | 10-second funny skits & daily comics",
@@ -327,6 +343,8 @@
         secSocial: "公式SNS",
         clockTitle: "脱力デスククロック ＆ ポモドーロ",
         clockDesc: "デスクトップのお供に。ランダム名言ガチャとタイマー機能。",
+        oracleTitle: "小比うさぎの神算占い",
+        oracleDesc: "諸葛神数に学ぶ384のお告げ。数字や漢字から占う脱力哲学と運命。",
         bookTitle: "小さなウサギの無駄ノート",
         bookDesc: "Amazon KDPにて発売中。くだらないメモを残すための一冊。",
         ytDesc: "@HeyXiaoBi｜10秒ショートギャグ＆日常アニメ",
@@ -340,6 +358,8 @@
         secSocial: "Offizielle Kanäle",
         clockTitle: "Liege-Uhr & Pomodoro-Timer",
         clockDesc: "Schreibtisch-Begleiter mit Zufallskarten und Anti-Burnout-Timer.",
+        oracleTitle: "Das Orakel des kleinen Hasen",
+        oracleDesc: "384 Schicksale nach Zhuge. Wähle 3 Ziffern für pessimistische Weisheiten.",
         bookTitle: "Der nutzlose Notizblock des kleinen weißen Hasen",
         bookDesc: "Auf Amazon KDP erschienen. Perfekt für all die unnützen Gedanken.",
         ytDesc: "@HeyXiaoBi | 10-Sekunden-Sketche & Comics",
@@ -353,6 +373,8 @@
         secSocial: "Réseaux Officiels",
         clockTitle: "Horloge Paresseuse & Pomodoro",
         clockDesc: "Compagnon de bureau, cartes de citations et minuteur anti-stress.",
+        oracleTitle: "L'Oracle du Petit Lapin",
+        oracleDesc: "384 destins issus de l'oracle de Zhuge. Révélez votre prophétie paresseuse.",
         bookTitle: "Le carnet inutile du petit lapin blanc",
         bookDesc: "Disponible sur Amazon KDP. Pour noter tout ce qui n'a aucune importance.",
         ytDesc: "@HeyXiaoBi | Skits de 10 secondes et animations",
@@ -371,6 +393,8 @@
       document.getElementById('secSocialTitle').innerText = data.secSocial;
       document.getElementById('clockTitle').innerText = data.clockTitle;
       document.getElementById('clockDesc').innerText = data.clockDesc;
+      document.getElementById('oracleTitle').innerText = data.oracleTitle;
+      document.getElementById('oracleDesc').innerText = data.oracleDesc;
       document.getElementById('bookTitle').innerText = data.bookTitle;
       document.getElementById('bookDesc').innerText = data.bookDesc;
       document.getElementById('ytDesc').innerText = data.ytDesc;
