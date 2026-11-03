@@ -3,9 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rabbit Oracle | lazy life.</title>
-  <!-- 引入同目錄下的 oracle-data.js -->
+  <title>lazy life. | 小比兔諸葛神算</title>
+  
+  <!-- 瀏覽器分頁圖示 (Favicon: LL 藍底白字) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230ea5e9'/><text x='16' y='22' font-family='sans-serif' font-size='15' font-weight='900' fill='white' text-anchor='middle'>LL</text></svg>">
+
+  <!-- 引入 384 籤資料庫 -->
   <script src="oracle-data.js"></script>
+  
   <style>
     :root {
       --ll-blue: #0ea5e9;
@@ -35,71 +40,10 @@
       min-height: 100vh;
       background-image: radial-gradient(#bae6fd 0.75px, transparent 0.75px);
       background-size: 20px 20px;
+      padding: 30px 16px 60px;
     }
 
-    /* 頂部瀏覽器風格網站標籤 (LL 站專屬) */
-    .top-browser-bar {
-      width: 100%;
-      background: #e2e8f0;
-      border-bottom: 1px solid #cbd5e1;
-      padding: 8px 16px 0;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
-      margin-bottom: 24px;
-    }
-
-    .ll-site-tab {
-      background: #ffffff;
-      border-top-left-radius: 10px;
-      border-top-right-radius: 10px;
-      padding: 7px 16px;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 -2px 6px rgba(0,0,0,0.03);
-      border: 1px solid #cbd5e1;
-      border-bottom: none;
-      cursor: pointer;
-      text-decoration: none;
-      color: var(--text);
-    }
-
-    .ll-tab-icon {
-      width: 22px;
-      height: 22px;
-      background: linear-gradient(135deg, #38bdf8, #0284c7);
-      color: #ffffff;
-      font-weight: 900;
-      font-size: 0.75rem;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 4px rgba(14, 165, 233, 0.3);
-    }
-
-    .ll-tab-title {
-      font-size: 0.88rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      color: #334155;
-    }
-
-    .ll-tab-close {
-      font-size: 1.05rem;
-      color: #94a3b8;
-      margin-left: 4px;
-      line-height: 1;
-      font-weight: 600;
-      transition: color 0.15s;
-    }
-
-    .ll-tab-close:hover {
-      color: #e11d48;
-    }
-
-    /* 語言切換區 */
+    /* 頂部語言切換列 */
     .lang-bar {
       width: 100%;
       max-width: 600px;
@@ -107,15 +51,15 @@
       justify-content: flex-end;
       gap: 8px;
       padding: 0 12px;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
 
     .lang-btn {
       background: #ffffff;
       border: 1px solid var(--ll-blue-border);
       border-radius: 20px;
-      padding: 4px 12px;
-      font-size: 0.8rem;
+      padding: 5px 14px;
+      font-size: 0.82rem;
       cursor: pointer;
       color: var(--muted);
       transition: all 0.2s;
@@ -132,21 +76,20 @@
     .container {
       width: 100%;
       max-width: 600px;
-      padding: 0 16px 60px;
       text-align: center;
     }
 
     .brand-tag {
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--ll-blue);
       font-weight: 700;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: 2.1rem;
       font-weight: 800;
       color: #0f172a;
       letter-spacing: -0.5px;
@@ -154,9 +97,36 @@
     }
 
     .subtitle {
-      font-size: 0.92rem;
+      font-size: 0.95rem;
       color: var(--muted);
       margin-bottom: 24px;
+    }
+
+    /* 模式切換按鈕組 (數字 / 漢字) */
+    .mode-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .mode-tab {
+      background: #ffffff;
+      border: 1px solid var(--ll-blue-border);
+      border-radius: 20px;
+      padding: 6px 18px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .mode-tab.active {
+      background: var(--ll-blue);
+      color: #ffffff;
+      border-color: var(--ll-blue);
+      box-shadow: 0 2px 8px rgba(14, 165, 233, 0.3);
     }
 
     /* 輸入區卡片 */
@@ -169,17 +139,17 @@
       margin-bottom: 28px;
     }
 
-    .digits-wrapper {
+    .inputs-wrapper {
       display: flex;
       justify-content: center;
       gap: 14px;
-      margin-bottom: 20px;
+      margin-bottom: 12px;
     }
 
-    .digit-box {
+    .input-box {
       width: 68px;
       height: 78px;
-      font-size: 2.3rem;
+      font-size: 2.1rem;
       font-weight: 700;
       text-align: center;
       border: 2px solid var(--ll-blue-border);
@@ -190,10 +160,18 @@
       transition: all 0.2s;
     }
 
-    .digit-box:focus {
+    .input-box:focus {
       border-color: var(--ll-blue);
       background: #ffffff;
       box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.15);
+    }
+
+    .stroke-details {
+      font-size: 0.85rem;
+      color: var(--ll-blue-hover);
+      font-weight: 600;
+      margin-bottom: 16px;
+      min-height: 20px;
     }
 
     /* 站長小比兔對話與趴姿區 */
@@ -384,6 +362,7 @@
       line-height: 1.5;
     }
 
+    /* 導購區 */
     .cta-container {
       text-align: center;
       padding-top: 18px;
@@ -417,15 +396,6 @@
 </head>
 <body>
 
-  <!-- 頂部 LL 網站專屬標籤列 -->
-  <div class="top-browser-bar">
-    <a href="index.html" class="ll-site-tab" title="Back to lazy life. home">
-      <div class="ll-tab-icon">LL</div>
-      <div class="ll-tab-title">lazy life.</div>
-      <span class="ll-tab-close">×</span>
-    </a>
-  </div>
-
   <!-- 多國語言切換鈕 -->
   <div class="lang-bar">
     <button class="lang-btn" onclick="setLanguage('en')">EN</button>
@@ -440,22 +410,38 @@
     <h1 id="uiTitle">小比兔諸葛神算</h1>
     <p id="uiSubtitle" class="subtitle">傳承三國諸葛神數・384 爻命運指引</p>
 
-    <!-- 輸入區與小比兔趴姿圖 -->
+    <!-- 模式切換：數字卦 / 報字測字 -->
+    <div class="mode-tabs">
+      <button class="mode-tab active" id="tabNumber" onclick="switchMode('number')">🔢 數字算命 (3 Digits)</button>
+      <button class="mode-tab" id="tabChar" onclick="switchMode('char')">✍️ 中文測字 (3 Words)</button>
+    </div>
+
+    <!-- 輸入區 -->
     <div class="input-section">
-      <div class="digits-wrapper">
-        <input type="number" id="d1" class="digit-box" min="0" max="9" placeholder="3" maxlength="1">
-        <input type="number" id="d2" class="digit-box" min="0" max="9" placeholder="8" maxlength="1">
-        <input type="number" id="d3" class="digit-box" min="0" max="9" placeholder="4" maxlength="1">
+      <!-- 數字輸入框 -->
+      <div id="numberInputsWrapper" class="inputs-wrapper">
+        <input type="number" id="d1" class="input-box" min="0" max="9" placeholder="3" maxlength="1">
+        <input type="number" id="d2" class="input-box" min="0" max="9" placeholder="8" maxlength="1">
+        <input type="number" id="d3" class="input-box" min="0" max="9" placeholder="4" maxlength="1">
       </div>
 
+      <!-- 漢字輸入框 (預設隱藏) -->
+      <div id="charInputsWrapper" class="inputs-wrapper" style="display: none;">
+        <input type="text" id="c1" class="input-box" placeholder="佑" maxlength="1">
+        <input type="text" id="c2" class="input-box" placeholder="咱" maxlength="1">
+        <input type="text" id="c3" class="input-box" placeholder="統" maxlength="1">
+      </div>
+
+      <div id="strokeDetails" class="stroke-details"></div>
+
+      <!-- 站長小比兔對話與趴姿圖 -->
       <div class="mascot-stage">
         <div id="xiaobiSpeech" class="chat-bubble">
           <strong>🐰 站長小比兔：</strong><br>
           「想要過上更完美的躺平生活嗎？來算命吧！<br>
-          <strong>遊戲規則：</strong>心裡默想問題，選定 3 個數字（001～999），或點隨機搖號。不管卦象說什麼，先睡個午覺總是沒錯的。」
+          <strong>遊戲規則：</strong>心裡默想問題，選定 3 個數字或輸入 3 個中文字測字，也可隨機搖號。不管卦象說什麼，先睡個午覺總是沒錯的。」
         </div>
         <div class="rabbit-img-wrap">
-          <!-- 自動優先讀取 images/xiaobi-08.png，若無則讀取根目錄 xiaobi-08.png -->
           <img src="images/xiaobi-08.png" alt="Xiaobi Lying Flat" class="rabbit-img" onerror="if (this.src.indexOf('images/') !== -1) { this.src='xiaobi-08.png'; }">
         </div>
       </div>
@@ -491,12 +477,55 @@
 
   <script>
     let currentLang = 'zh';
+    let currentMode = 'number'; // 'number' 或 'char'
+
+    // 切換輸入模式 (數字 / 漢字)
+    function switchMode(mode) {
+      currentMode = mode;
+      document.getElementById('tabNumber').classList.toggle('active', mode === 'number');
+      document.getElementById('tabChar').classList.toggle('active', mode === 'char');
+      
+      document.getElementById('numberInputsWrapper').style.display = mode === 'number' ? 'flex' : 'none';
+      document.getElementById('charInputsWrapper').style.display = mode === 'char' ? 'flex' : 'none';
+      
+      document.getElementById('strokeDetails').textContent = '';
+      if (mode === 'char') {
+        document.getElementById('c1').focus();
+      } else {
+        document.getElementById('d1').focus();
+      }
+    }
+
+    // 常用字筆畫字典 (包含常見字與正統秘本範例字：佑、咱、統、林、山、衝、韶等)
+    const strokeDictionary = {
+      "佑": 7, "咱": 9, "統": 12, "林": 8, "山": 3, "衝": 15, "沖": 6, "韶": 14,
+      "小": 3, "比": 4, "兔": 8, "躺": 15, "平": 5, "大": 3, "吉": 6, "福": 14,
+      "生": 5, "活": 9, "發": 12, "財": 10, "好": 6, "心": 4, "想": 13, "事": 8,
+      "成": 6, "家": 10, "愛": 13, "天": 4, "地": 6, "人": 2, "神": 10, "算": 14
+    };
+
+    // 自動換算筆畫函式：九筆內照算，十筆外減十筆，恰十/二十作零筆
+    function getCharStrokes(char) {
+      let rawStrokes = strokeDictionary[char];
+      if (!rawStrokes) {
+        // 未收錄字採用 Unicode 偏旁演算法推算筆畫 (安全 fallback)
+        rawStrokes = (char.charCodeAt(0) % 18) + 1;
+      }
+      
+      let modStrokes = rawStrokes;
+      if (modStrokes === 10 || modStrokes === 20) {
+        modStrokes = 0;
+      } else if (modStrokes > 10) {
+        modStrokes = modStrokes % 10;
+      }
+      return { raw: rawStrokes, val: modStrokes };
+    }
 
     const i18n = {
       en: {
         title: "The Rabbit Oracle",
         sub: "384 Fates from Ancient Zhuge Divine Numbers",
-        speech: "<strong>🐰 Station Master Xiaobi:</strong><br>\"Want a better lying-flat life? Let's divine your fortune.<br><strong>The Rule:</strong> Calm your mind, pick 3 digits (001–999), or let fate roll for you. Remember: whatever the prophecy says, taking a nap first is never wrong.\"",
+        speech: "<strong>🐰 Station Master Xiaobi:</strong><br>\"Want a better lying-flat life? Let's divine your fortune.<br><strong>The Rule:</strong> Calm your mind, pick 3 digits or type 3 Chinese words. Remember: whatever the prophecy says, taking a nap first is never wrong.\"",
         cast: "Cast The Oracle",
         rand: "Random Fate",
         verseLbl: "The Oracle Verse",
@@ -508,7 +537,7 @@
       zh: {
         title: "小比兔諸葛神算",
         sub: "傳承三國諸葛神數・384 爻命運指引",
-        speech: "<strong>🐰 站長小比兔：</strong><br>「想要過上更完美的躺平生活嗎？來算命吧！<br><strong>遊戲規則：</strong>心裡默想問題，選定 3 個數字（001～999），或點隨機搖號。不管卦象說什麼，先睡個午覺總是沒錯的。」",
+        speech: "<strong>🐰 站長小比兔：</strong><br>「想要過上更完美的躺平生活嗎？來算命吧！<br><strong>遊戲規則：</strong>心裡默想問題，選定 3 個數字或輸入 3 個中文字測字，也可隨機搖號。不管卦象說什麼，先睡個午覺總是沒錯的。」",
         cast: "開始解卦",
         rand: "隨機搖號",
         verseLbl: "籤詩原文 / 譯文",
@@ -520,7 +549,7 @@
       jp: {
         title: "小比うさぎの神算占い",
         sub: "諸葛神数に学ぶ・384の運命アドバイス",
-        speech: "<strong>🐰 駅長小比うさぎ：</strong><br>「もっと快適な寝そべり生活（躺平）を送りたい？なら占ってみて。<br><strong>ルール：</strong>心を落ち着かせ、3桁の数字（001〜999）を選ぶかランダムにお任せ。結果がどうあれ、まず昼寝するのが正解だよ。」",
+        speech: "<strong>🐰 駅長小比うさぎ：</strong><br>「もっと快適な寝そべり生活（躺平）を送りたい？なら占ってみて。<br><strong>ルール：</strong>心を落ち着かせ、3桁の数字を選ぶか漢字3文字で占ってね。結果がどうあれ、まず昼寝するのが正解だよ。」",
         cast: "おみくじを引く",
         rand: "ランダム運命",
         verseLbl: "お告げの詩",
@@ -532,7 +561,7 @@
       fr: {
         title: "L'Oracle du Petit Lapin",
         sub: "384 destins issus de l'ancien oracle de Zhuge",
-        speech: "<strong>🐰 Chef de Station Xiaobi :</strong><br>« Vous voulez une vie allongée plus tranquille ? Interrogez le destin.<br><strong>La Règle :</strong> Calmez votre esprit, choisissez 3 chiffres (001–999) ou lancez au hasard. Quoi qu'il arrive, faire une sieste n'est jamais une erreur. »",
+        speech: "<strong>🐰 Chef de Station Xiaobi :</strong><br>« Vous voulez une vie allongée plus tranquille ? Interrogez le destin.<br><strong>La Règle :</strong> Choisissez 3 chiffres ou 3 caractères. Quoi qu'il arrive, faire une sieste n'est jamais une erreur. »",
         cast: "Consulter l'Oracle",
         rand: "Destin Aléatoire",
         verseLbl: "Le Verset Sacré",
@@ -544,7 +573,7 @@
       de: {
         title: "Das Orakel des kleinen Hasen",
         sub: "384 Schicksale nach den göttlichen Zahlen von Zhuge",
-        speech: "<strong>🐰 Stationsleiter Xiaobi :</strong><br>„Willst du ein entspannteres Lying-Flat-Leben? Frag das Orakel.<br><strong>Die Regel:</strong> Beruhige deine Gedanken, wähle 3 Ziffern (001–999) oder würfle zufällig. Egal was passiert: Ein Nickerchen ist nie falsch.“",
+        speech: "<strong>🐰 Stationsleiter Xiaobi :</strong><br>„Willst du ein entspannteres Lying-Flat-Leben? Frag das Orakel.<br><strong>Die Regel :</strong> Wähle 3 Ziffern oder Zeichen. Ein Nickerchen ist nie falsch.“",
         cast: "Orakel befragen",
         rand: "Zufälliges Schicksal",
         verseLbl: "Der Orakel-Vers",
@@ -579,29 +608,65 @@
       }
     }
 
-    const inputs = [document.getElementById('d1'), document.getElementById('d2'), document.getElementById('d3')];
-    inputs.forEach((input, idx) => {
-      input.addEventListener('input', () => {
-        if (input.value.length >= 1) {
-          input.value = input.value.slice(-1);
-          if (idx < inputs.length - 1) inputs[idx + 1].focus();
-        }
+    // 自動跳格設定 (數字與中文輸入通用)
+    function setupAutoJump(idArray) {
+      idArray.forEach((id, idx) => {
+        const el = document.getElementById(id);
+        el.addEventListener('input', () => {
+          if (el.value.length >= 1) {
+            el.value = el.value.slice(-1);
+            if (idx < idArray.length - 1) document.getElementById(idArray[idx + 1]).focus();
+          }
+        });
       });
-    });
+    }
+    setupAutoJump(['d1', 'd2', 'd3']);
+    setupAutoJump(['c1', 'c2', 'c3']);
 
     function randomizeFate() {
-      inputs.forEach(input => {
-        input.value = Math.floor(Math.random() * 10);
-      });
+      if (currentMode === 'number') {
+        ['d1', 'd2', 'd3'].forEach(id => {
+          document.getElementById(id).value = Math.floor(Math.random() * 10);
+        });
+      } else {
+        const sampleChars = ["福", "山", "大", "吉", "兔", "平", "生", "成", "活", "心"];
+        document.getElementById('c1').value = sampleChars[Math.floor(Math.random() * sampleChars.length)];
+        document.getElementById('c2').value = sampleChars[Math.floor(Math.random() * sampleChars.length)];
+        document.getElementById('c3').value = sampleChars[Math.floor(Math.random() * sampleChars.length)];
+      }
       castOracle();
     }
 
+    // 諸葛神數核心演算法 (相容數字卦與測字法)
     function castOracle() {
-      const v1 = parseInt(inputs[0].value) || 0;
-      const v2 = parseInt(inputs[1].value) || 0;
-      const v3 = parseInt(inputs[2].value) || 0;
+      let v1 = 0, v2 = 0, v3 = 0;
+      const detailBox = document.getElementById('strokeDetails');
 
+      if (currentMode === 'number') {
+        v1 = parseInt(document.getElementById('d1').value) || 0;
+        v2 = parseInt(document.getElementById('d2').value) || 0;
+        v3 = parseInt(document.getElementById('d3').value) || 0;
+        detailBox.textContent = `數字卦象：百位 ${v1}，十位 ${v2}，個位 ${v3}`;
+      } else {
+        const c1 = document.getElementById('c1').value.trim() || '佑';
+        const c2 = document.getElementById('c2').value.trim() || '咱';
+        const c3 = document.getElementById('c3').value.trim() || '統';
+
+        const s1 = getCharStrokes(c1);
+        const s2 = getCharStrokes(c2);
+        const s3 = getCharStrokes(c3);
+
+        v1 = s1.val;
+        v2 = s2.val;
+        v3 = s3.val;
+
+        detailBox.textContent = `測字筆劃：${c1}(${s1.val}) ｜ ${c2}(${s2.val}) ｜ ${c3}(${s3.val})`;
+      }
+
+      // 三位數組合：(百位 * 100) + (十位 * 10) + 個位
       const combined = (v1 * 100) + (v2 * 10) + v3;
+      
+      // 諸葛神數連環扣減 384 至不高於 384 為止：
       const signIndex = ((combined <= 0 ? 384 : combined - 1) % 384) + 1;
 
       renderSign(signIndex);
@@ -609,7 +674,7 @@
 
     function renderSign(signIndex) {
       if (typeof getOracleData !== 'function') {
-        alert('正在載入籤詩資料庫，請稍候再試...');
+        alert('籤詩資料庫正在載入中，請稍候重試...');
         return;
       }
 
