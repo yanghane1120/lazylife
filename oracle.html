@@ -103,7 +103,7 @@
       line-height: 1.5;
     }
 
-    /* 諸葛孔明傳奇介紹卡片 (上移至標題下方) */
+    /* 諸葛孔明傳奇介紹卡片 */
     .legend-box {
       background: #ffffff;
       border: 1px solid var(--ll-blue-border);
@@ -324,6 +324,7 @@
       text-align: left;
       box-shadow: 0 10px 35px rgba(14, 165, 233, 0.1);
       animation: fadeIn 0.4s ease-out;
+      margin-bottom: 28px;
     }
 
     @keyframes fadeIn {
@@ -432,6 +433,75 @@
       box-shadow: 0 6px 16px rgba(14, 165, 233, 0.4);
       transform: translateY(-1px);
     }
+
+    /* 底部返回 lazy life. 官方首頁卡片 */
+    .portal-hub-card {
+      width: 100%;
+      background: #ffffff;
+      border: 1.5px solid var(--ll-blue-border);
+      border-radius: 20px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.06);
+      transition: all 0.2s ease;
+      margin-top: 12px;
+    }
+
+    .portal-hub-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--ll-blue);
+      box-shadow: 0 8px 24px rgba(14, 165, 233, 0.15);
+    }
+
+    .portal-thumb {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--ll-blue-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .portal-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+
+    .portal-info {
+      flex: 1;
+      text-align: left;
+    }
+
+    .portal-title-row {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .portal-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .portal-arrow {
+      color: var(--ll-blue);
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
   </style>
 </head>
 <body>
@@ -450,7 +520,7 @@
     <h1 id="uiTitle">小比兔諸葛神算</h1>
     <p id="uiSubtitle" class="subtitle">傳承古老中國的三國朝代諸葛神數・384 爻命運指引</p>
 
-    <!-- 諸葛孔明傳奇介紹區 (移至標題與副標下方) -->
+    <!-- 諸葛孔明傳奇介紹區 -->
     <div class="legend-box">
       <div class="legend-title" id="legendTitle">⚔️ 關於神算之祖：諸葛孔明 (Zhuge Liang)</div>
       <div class="legend-desc" id="legendDesc"></div>
@@ -520,6 +590,21 @@
         <a id="ctaBtn" href="https://link.amazon/B072n2eaF" target="_blank" class="cta-btn">前往 Amazon 收藏《小比兔的廢物筆記本》</a>
       </div>
     </div>
+
+    <!-- 底部返回 lazy life. 官方首頁卡片 -->
+    <a href="index.html" class="portal-hub-card">
+      <div class="portal-thumb">
+        <img src="images/xiaobi-01.png" alt="Xiaobi Portal" onerror="if (this.src.indexOf('images/') !== -1) { this.src='xiaobi-01.png'; }">
+      </div>
+      <div class="portal-info">
+        <div class="portal-title-row">
+          <span id="portalLinkTitle">回到 lazy life. 官方首頁</span>
+        </div>
+        <div id="portalLinkDesc" class="portal-desc">探索小比兔的低耗能世界、桌面陪伴時鐘與生活指南</div>
+      </div>
+      <div class="portal-arrow">›</div>
+    </a>
+
   </div>
 
   <script>
@@ -580,7 +665,9 @@
         insightLbl: "Insight & Guidance",
         ctaDesc: "Record this warning in your notebook before fate changes its mind.",
         ctaBtn: officialEnBookTitle,
-        kdpUrl: "https://link.amazon/B072n2eaF"
+        kdpUrl: "https://link.amazon/B072n2eaF",
+        portalTitle: "Back to lazy life. Official Portal",
+        portalDesc: "Explore the low-energy rabbit universe, desk timer & lifestyle tools."
       },
       zh: {
         title: "小比兔諸葛神算",
@@ -595,22 +682,26 @@
         insightLbl: "處世指引",
         ctaDesc: "在命運反悔之前，先把這段神諭記在小比兔筆記本裡。",
         ctaBtn: "前往 Amazon 收藏《小比兔的廢物筆記本》",
-        kdpUrl: "https://link.amazon/B072n2eaF"
+        kdpUrl: "https://link.amazon/B072n2eaF",
+        portalTitle: "回到 lazy life. 官方首頁",
+        portalDesc: "探索小比兔的低耗能世界、桌面陪伴時鐘與生活指南"
       },
       jp: {
         title: "小比うさぎの神算占い",
         sub: "古代中国・三国志時代の諸葛神数に学ぶ・384の運命アドバイス",
-        speech: "<strong>🐰 駅長小比うさぎ：</strong><br>「もっと快適な寝そべり生活（躺平）を送りたい？なら占ってみて。<br><strong>ルール：</strong>心を落ち着かせ、3桁の數字を選ぶか漢字3文字で占ってね。結果がどうあれ、まず晝寢するのが正解だよ。」",
+        speech: "<strong>🐰 駅長小比うさぎ：</strong><br>「もっと快適な寝そべり生活（躺平）を送りたい？なら占ってみて。<br><strong>ルール：</strong>心を落ち着かせ、3桁の数字を選ぶか漢字3文字で占ってね。結果がどうあれ、まず昼寝するのが正解だよ。」",
         cast: "おみくじを引く",
         rand: "ランダム運命",
         legendTitle: "⚔️ 稀代の天才軍師・諸葛孔明とは？",
         legendDesc: "三国志の頂点に君臨する神算鬼謀の軍師（181〜234年）。東南の風を呼び、天下三分の計を描き、死してなお仲達を走らせた東洋最強の頭脳。この384の卦は、孔明が宇宙の法則と易経を凝縮した伝説の神占いです。",
-        legendTip: "🐰 <strong>シャオビの脫力ツッコミ：</strong>「孔明先生は超天才だけど、完全にブラック労働で過労死したタイプだよ。占い結果はありがたく頂くとして、生活リズムだけは絶対に真似しちゃダメ。」",
+        legendTip: "🐰 <strong>シャオビの脱力ツッコミ：</strong>「孔明先生は超天才だけど、完全にブラック労働で過労死したタイプだよ。占い結果はありがたく頂くとして、生活リズムだけは絶対に真似しちゃダメ。」",
         verseLbl: "お告げの詩",
         insightLbl: "人生のヒント",
         ctaDesc: "運命が変わってしまう前に、ノートに記録しておこう。",
         ctaBtn: "小比うさぎのダメダメノート (日本語版) をAmazonで見る",
-        kdpUrl: "https://link.amazon/B00kvYWNj"
+        kdpUrl: "https://link.amazon/B00kvYWNj",
+        portalTitle: "lazy life. 公式ポータルへ戻る",
+        portalDesc: "シャオビの省エネな日常ワールド、時計ツール＆生活ガイドへ"
       },
       fr: {
         title: "L'Oracle du Petit Lapin",
@@ -625,7 +716,9 @@
         insightLbl: "Conseil & Sagesse",
         ctaDesc: "Notez cet avertissement dans votre carnet avant que le destin ne change d'avis.",
         ctaBtn: "Le carnet inutile du petit lapin (Français)",
-        kdpUrl: "https://link.amazon/B0dTmtta4"
+        kdpUrl: "https://link.amazon/B0dTmtta4",
+        portalTitle: "Retour au portail lazy life.",
+        portalDesc: "Découvrez l'univers de Xiaobi, horloge de bureau et outils anti-stress."
       },
       de: {
         title: "Das Orakel des kleinen Hasen",
@@ -640,7 +733,9 @@
         insightLbl: "Einsicht & Rat",
         ctaDesc: "Notiere diese Warnung in deinem Notizblock, bevor sich das Schicksal besinnt.",
         ctaBtn: "Der Notizblock des kleinen Hasen (Deutsch)",
-        kdpUrl: "https://link.amazon/B029TO94d"
+        kdpUrl: "https://link.amazon/B029TO94d",
+        portalTitle: "Zurück zur lazy life. Startseite",
+        portalDesc: "Entdecke die energiesparende Hasenwelt, Tischuhr und Tools."
       }
     };
 
@@ -669,6 +764,10 @@
       ctaBtn.textContent = dict.ctaBtn || "前往 Amazon 收藏《小比兔的廢物筆記本》";
       ctaBtn.href = dict.kdpUrl || "https://link.amazon/B072n2eaF";
 
+      // 同步切換底部回首頁卡片的文字
+      document.getElementById('portalLinkTitle').textContent = dict.portalTitle;
+      document.getElementById('portalLinkDesc').textContent = dict.portalDesc;
+
       const card = document.getElementById('resultCard');
       if (card && card.style.display === 'block') {
         const signNum = parseInt(card.dataset.signIndex) || 1;
@@ -676,7 +775,6 @@
       }
     }
 
-    // 智慧跳格修復：相容中文輸入法 (IME 選字) 與 Backspace 回退
     function setupAutoJump(idArray) {
       idArray.forEach((id, idx) => {
         const el = document.getElementById(id);
