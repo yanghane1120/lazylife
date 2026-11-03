@@ -99,7 +99,46 @@
     .subtitle {
       font-size: 0.95rem;
       color: var(--muted);
+      margin-bottom: 22px;
+      line-height: 1.5;
+    }
+
+    /* 諸葛孔明傳奇介紹卡片 (上移至標題下方) */
+    .legend-box {
+      background: #ffffff;
+      border: 1px solid var(--ll-blue-border);
+      border-radius: 20px;
+      padding: 20px 22px;
+      text-align: left;
       margin-bottom: 24px;
+      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.05);
+    }
+
+    .legend-title {
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: var(--ll-blue-hover);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .legend-desc {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: #334155;
+      margin-bottom: 12px;
+    }
+
+    .legend-xiaobi-tip {
+      font-size: 0.85rem;
+      line-height: 1.55;
+      color: #0369a1;
+      background: var(--ll-blue-light);
+      border-left: 3px solid var(--ll-blue);
+      padding: 10px 14px;
+      border-radius: 0 10px 10px 0;
     }
 
     /* 模式切換按鈕組 (數字 / 漢字) */
@@ -275,44 +314,6 @@
       background: var(--ll-blue-light);
     }
 
-    /* 諸葛孔明傳奇介紹卡片 */
-    .legend-box {
-      background: #ffffff;
-      border: 1px solid var(--ll-blue-border);
-      border-radius: 20px;
-      padding: 20px 22px;
-      text-align: left;
-      margin-bottom: 28px;
-      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.05);
-    }
-
-    .legend-title {
-      font-size: 0.98rem;
-      font-weight: 800;
-      color: var(--ll-blue-hover);
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .legend-desc {
-      font-size: 0.88rem;
-      line-height: 1.65;
-      color: #334155;
-      margin-bottom: 12px;
-    }
-
-    .legend-xiaobi-tip {
-      font-size: 0.85rem;
-      line-height: 1.55;
-      color: #0369a1;
-      background: var(--ll-blue-light);
-      border-left: 3px solid var(--ll-blue);
-      padding: 10px 14px;
-      border-radius: 0 10px 10px 0;
-    }
-
     /* 解籤結果卡片 */
     .result-card {
       display: none;
@@ -418,15 +419,13 @@
       background: linear-gradient(135deg, var(--ll-blue), var(--ll-blue-hover));
       color: #ffffff;
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       font-weight: 700;
       line-height: 1.4;
-      padding: 12px 24px;
+      padding: 12px 28px;
       border-radius: 25px;
       box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25);
       transition: all 0.2s;
-      max-width: 90%;
-      word-break: break-word;
     }
 
     .cta-btn:hover {
@@ -449,7 +448,14 @@
   <div class="container">
     <div class="brand-tag">lazy life.</div>
     <h1 id="uiTitle">小比兔諸葛神算</h1>
-    <p id="uiSubtitle" class="subtitle">傳承三國諸葛神數・384 爻命運指引</p>
+    <p id="uiSubtitle" class="subtitle">傳承古老中國的三國朝代諸葛神數・384 爻命運指引</p>
+
+    <!-- 諸葛孔明傳奇介紹區 (移至標題與副標下方) -->
+    <div class="legend-box">
+      <div class="legend-title" id="legendTitle">⚔️ 關於神算之祖：諸葛孔明 (Zhuge Liang)</div>
+      <div class="legend-desc" id="legendDesc"></div>
+      <div class="legend-xiaobi-tip" id="legendTip"></div>
+    </div>
 
     <!-- 模式切換：數字卦 / 報字測字 -->
     <div class="mode-tabs">
@@ -480,7 +486,7 @@
         <div id="xiaobiSpeech" class="chat-bubble">
           <strong>🐰 站長小比兔：</strong><br>
           「想要過上更完美的躺平生活嗎？來算命吧！<br>
-          <strong>遊戲規則：</strong>心裡默想問題，選定 3 個數字或輸入 3 個中文字測字，也可隨機搖號。不管卦象說什麼，先睡個午搞總是沒錯的。」
+          <strong>遊戲規則：</strong>心裡默想問題，選定 3 個數字或輸入 3 個中文字測字，也可隨機搖號。不管卦象說什麼，先睡個午覺總是沒錯的。」
         </div>
         <div class="rabbit-img-wrap">
           <img src="images/xiaobi-08.png" alt="Xiaobi Lying Flat" class="rabbit-img" onerror="if (this.src.indexOf('images/') !== -1) { this.src='xiaobi-08.png'; }">
@@ -491,13 +497,6 @@
         <button id="btnCast" class="btn-primary" onclick="castOracle()">開始解卦</button>
         <button id="btnRandom" class="btn-secondary" onclick="randomizeFate()">隨機搖號</button>
       </div>
-    </div>
-
-    <!-- 諸葛孔明傳奇介紹區 -->
-    <div class="legend-box">
-      <div class="legend-title" id="legendTitle">⚔️ 關於神算之祖：諸葛孔明 (Zhuge Liang)</div>
-      <div class="legend-desc" id="legendDesc"></div>
-      <div class="legend-xiaobi-tip" id="legendTip"></div>
     </div>
 
     <!-- 解籤結果展示 -->
@@ -518,7 +517,7 @@
 
       <div class="cta-container">
         <div id="ctaDesc" class="cta-desc">在命運反悔之前，先把這段神諭記在小比兔筆記本裡。</div>
-        <a id="ctaBtn" href="https://link.amazon/B072n2eaF" target="_blank" class="cta-btn">前往 Amazon 收藏官方筆記本</a>
+        <a id="ctaBtn" href="https://link.amazon/B072n2eaF" target="_blank" class="cta-btn">前往 Amazon 收藏《小比兔的廢物筆記本》</a>
       </div>
     </div>
   </div>
@@ -570,12 +569,12 @@
     const i18n = {
       en: {
         title: "The Rabbit Oracle",
-        sub: "384 Fates from Ancient Zhuge Divine Numbers",
+        sub: "384 Fates from the Ancient Three Kingdoms Era of China (Zhuge Divine Numbers)",
         speech: "<strong>🐰 Station Master Xiaobi:</strong><br>\"Want a better lying-flat life? Let's divine your fortune.<br><strong>The Rule:</strong> Calm your mind, pick 3 digits or type 3 Chinese words. Remember: whatever the prophecy says, taking a nap first is never wrong.\"",
         cast: "Cast The Oracle",
         rand: "Random Fate",
         legendTitle: "⚔️ Who is Master Zhuge Liang? (諸葛孔明)",
-        legendDesc: "The greatest strategist in Chinese history (181–234 AD). A legendary statesman, inventor, and master of celestial mechanics who could literally 'borrow the southeast wind' and predict battle outcomes down to the exact second. Legend says he encoded 384 cosmic fates into this mathematical oracle system.",
+        legendDesc: "The greatest strategist in Chinese history during the legendary Three Kingdoms era (181–234 AD). A transcendent statesman, inventor, and master of celestial mechanics who could literally 'borrow the southeast wind' and predict battle outcomes down to the exact second. Legend says he encoded 384 cosmic fates into this mathematical oracle system.",
         legendTip: "🐰 <strong>Xiaobi's Reality Check:</strong> \"He was a cosmic genius, but he literally worked 20 hours a day until terminal burnout. He is an icon, but definitely NOT a role model for work-life balance. Use his divine oracle, but never copy his overtime schedule.\"",
         verseLbl: "The Oracle Verse",
         insightLbl: "Insight & Guidance",
@@ -585,7 +584,7 @@
       },
       zh: {
         title: "小比兔諸葛神算",
-        sub: "傳承三國諸葛神數・384 爻命運指引",
+        sub: "傳承古老中國的三國朝代諸葛神數・384 爻命運指引",
         speech: "<strong>🐰 站長小比兔：</strong><br>「想要過上更完美的躺平生活嗎？來算命吧！<br><strong>遊戲規則：</strong>心裡默想問題，選定 3 個數字或輸入 3 個中文字測字，也可隨機搖號。不管卦象說什麼，先睡個午覺總是沒錯的。」",
         cast: "開始解卦",
         rand: "隨機搖號",
@@ -595,18 +594,18 @@
         verseLbl: "籤詩原文 / 譯文",
         insightLbl: "處世指引",
         ctaDesc: "在命運反悔之前，先把這段神諭記在小比兔筆記本裡。",
-        ctaBtn: officialEnBookTitle,
+        ctaBtn: "前往 Amazon 收藏《小比兔的廢物筆記本》",
         kdpUrl: "https://link.amazon/B072n2eaF"
       },
       jp: {
         title: "小比うさぎの神算占い",
-        sub: "諸葛神数に学ぶ・384の運命アドバイス",
-        speech: "<strong>🐰 駅長小比うさぎ：</strong><br>「もっと快適な寝そべり生活（躺平）を送りたい？なら占ってみて。<br><strong>ルール：</strong>心を落ち着かせ、3桁の数字を選ぶか漢字3文字で占ってね。結果がどうあれ、まず昼寝するのが正解だよ。」",
+        sub: "古代中国・三国志時代の諸葛神数に学ぶ・384の運命アドバイス",
+        speech: "<strong>🐰 駅長小比うさぎ：</strong><br>「もっと快適な寝そべり生活（躺平）を送りたい？なら占ってみて。<br><strong>ルール：</strong>心を落ち着かせ、3桁の數字を選ぶか漢字3文字で占ってね。結果がどうあれ、まず晝寢するのが正解だよ。」",
         cast: "おみくじを引く",
         rand: "ランダム運命",
         legendTitle: "⚔️ 稀代の天才軍師・諸葛孔明とは？",
         legendDesc: "三国志の頂点に君臨する神算鬼謀の軍師（181〜234年）。東南の風を呼び、天下三分の計を描き、死してなお仲達を走らせた東洋最強の頭脳。この384の卦は、孔明が宇宙の法則と易経を凝縮した伝説の神占いです。",
-        legendTip: "🐰 <strong>シャオビの脱力ツッコミ：</strong>「孔明先生は超天才だけど、完全にブラック労働で過労死したタイプだよ。占い結果はありがたく頂くとして、生活リズムだけは絶対に真似しちゃダメ。」",
+        legendTip: "🐰 <strong>シャオビの脫力ツッコミ：</strong>「孔明先生は超天才だけど、完全にブラック労働で過労死したタイプだよ。占い結果はありがたく頂くとして、生活リズムだけは絶対に真似しちゃダメ。」",
         verseLbl: "お告げの詩",
         insightLbl: "人生のヒント",
         ctaDesc: "運命が変わってしまう前に、ノートに記録しておこう。",
@@ -615,12 +614,12 @@
       },
       fr: {
         title: "L'Oracle du Petit Lapin",
-        sub: "384 destins issus de l'ancien oracle de Zhuge",
+        sub: "384 destins issus des Trois Royaumes de la Chine ancienne (Nombres Divins de Zhuge)",
         speech: "<strong>🐰 Chef de Station Xiaobi :</strong><br>« Vous voulez une vie allongée plus tranquille ? Interrogez le destin.<br><strong>La Règle :</strong> Choisissez 3 chiffres ou 3 caractères. Quoi qu'il arrive, faire une sieste n'est jamais une erreur. »",
         cast: "Consulter l'Oracle",
         rand: "Destin Aléatoire",
         legendTitle: "⚔️ Qui est Maître Zhuge Liang ? (孔明)",
-        legendDesc: "Le plus grand stratège militaire de l'histoire chinoise (181–234 ap. J.-C.). Un génie légendaire capable de prédire le vent et le destin avec une précision mathématique. Cet oracle de 384 hexagrammes est le condensé de sa sagesse divine.",
+        legendDesc: "Le plus grand stratège militaire de la Chine ancienne à l'époque des Trois Royaumes (181–234 ap. J.-C.). Un génie capable de prédire le vent et le destin avec une précision mathématique. Cet oracle de 384 hexagrammes est le condensé de sa sagesse divine.",
         legendTip: "🐰 <strong>La remarque lucide de Xiaobi :</strong> « C'était un génie absolu, mais il travaillait 20h par jour jusqu'à l'épuisement total. Consultez son oracle, mais n'imitez surtout pas ses horaires de travail. »",
         verseLbl: "Le Verset Sacré",
         insightLbl: "Conseil & Sagesse",
@@ -630,12 +629,12 @@
       },
       de: {
         title: "Das Orakel des kleinen Hasen",
-        sub: "384 Schicksale nach den göttlichen Zahlen von Zhuge",
+        sub: "384 Schicksale aus der Ära der Drei Reiche des alten Chinas (Göttliche Zahlen von Zhuge)",
         speech: "<strong>🐰 Stationsleiter Xiaobi :</strong><br>„Willst du ein entspannteres Lying-Flat-Leben? Frag das Orakel.<br><strong>Die Regel :</strong> Wähle 3 Ziffern oder Zeichen. Ein Nickerchen ist nie falsch.“",
         cast: "Orakel befragen",
         rand: "Zufälliges Schicksal",
         legendTitle: "⚔️ Wer ist Meister Zhuge Liang? (諸葛孔明)",
-        legendDesc: "Der größte Stratege und Staatsmann der chinesischen Geschichte (181–234 n. Chr.). Ein Meister der Kosmologie, der das Wetter und Schlachten punktgenau voraussagen konnte. Dieses Orakel mit 384 Schicksalslinien basiert auf seiner mathematischen Weitsicht.",
+        legendDesc: "Der größte Stratege und Staatsmann des alten Chinas während der Epoche der Drei Reiche (181–234 n. Chr.). Ein Meister der Kosmologie, der das Wetter und Schlachten punktgenau voraussagen konnte. Dieses Orakel mit 384 Schicksalslinien basiert auf seiner mathematischen Weitsicht.",
         legendTip: "🐰 <strong>Xiaobis Realitäts-Check :</strong> „Er war ein kosmisches Genie, starb aber buchstäblich an 20-Stunden-Tagen durch Überarbeitung. Nutze sein göttliches Orakel, aber mach bloß keine Überstunden wie er.“",
         verseLbl: "Der Orakel-Vers",
         insightLbl: "Einsicht & Rat",
@@ -667,7 +666,7 @@
       document.getElementById('ctaDesc').textContent = dict.ctaDesc;
       
       const ctaBtn = document.getElementById('ctaBtn');
-      ctaBtn.textContent = dict.ctaBtn || officialEnBookTitle;
+      ctaBtn.textContent = dict.ctaBtn || "前往 Amazon 收藏《小比兔的廢物筆記本》";
       ctaBtn.href = dict.kdpUrl || "https://link.amazon/B072n2eaF";
 
       const card = document.getElementById('resultCard');
@@ -677,7 +676,7 @@
       }
     }
 
-    // 智慧跳格修復：完美相容中文輸入法 (IME 選字) 與 Backspace 回退
+    // 智慧跳格修復：相容中文輸入法 (IME 選字) 與 Backspace 回退
     function setupAutoJump(idArray) {
       idArray.forEach((id, idx) => {
         const el = document.getElementById(id);
@@ -790,7 +789,7 @@
 
       const dict = i18n[currentLang] || i18n['en'];
       const ctaBtn = document.getElementById('ctaBtn');
-      ctaBtn.textContent = dict.ctaBtn || officialEnBookTitle;
+      ctaBtn.textContent = dict.ctaBtn || "前往 Amazon 收藏《小比兔的廢物筆記本》";
       ctaBtn.href = dict.kdpUrl || "https://link.amazon/B072n2eaF";
 
       resultCard.style.display = 'block';
