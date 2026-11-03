@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rabbit Oracle | Zhuge Divine Numbers - lazy life.</title>
+  <title>Rabbit Oracle | lazy life.</title>
   <style>
     :root {
-      --bg: #f9f9fb;
+      --bg: #f5f5f7;
       --card-bg: #ffffff;
       --text: #1a1a1a;
       --muted: #666666;
-      --border: #e0e0e0;
+      --border: #e2e2e8;
       --accent: #111111;
+      --bubble-bg: #ffffff;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
     body {
@@ -28,12 +29,39 @@
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      padding: 40px 20px;
+      padding: 30px 16px 60px;
+    }
+
+    /* 頂部語言切換列 */
+    .lang-bar {
+      width: 100%;
+      max-width: 640px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      color: var(--muted);
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active, .lang-btn:hover {
+      background: #000;
+      color: #fff;
+      border-color: #000;
     }
 
     .container {
       width: 100%;
-      max-width: 620px;
+      max-width: 640px;
       text-align: center;
     }
 
@@ -42,58 +70,121 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     h1 {
-      font-size: 2rem;
-      font-weight: 700;
+      font-size: 2.1rem;
+      font-weight: 800;
       letter-spacing: -0.5px;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     .subtitle {
       font-size: 0.95rem;
       color: var(--muted);
-      line-height: 1.5;
-      margin-bottom: 32px;
+      margin-bottom: 24px;
     }
 
-    /* Input & Dice Section */
+    /* 輸入區卡片 */
     .input-section {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-      margin-bottom: 32px;
+      border-radius: 20px;
+      padding: 24px 20px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.03);
+      margin-bottom: 28px;
     }
 
     .digits-wrapper {
       display: flex;
       justify-content: center;
-      gap: 16px;
+      gap: 14px;
       margin-bottom: 24px;
     }
 
     .digit-box {
-      width: 70px;
-      height: 80px;
-      font-size: 2.2rem;
+      width: 72px;
+      height: 82px;
+      font-size: 2.4rem;
       font-weight: 700;
       text-align: center;
       border: 2px solid var(--border);
-      border-radius: 12px;
+      border-radius: 14px;
       background: #fafafa;
       color: var(--text);
       outline: none;
-      transition: all 0.2s ease;
+      transition: all 0.2s;
     }
 
     .digit-box:focus {
       border-color: var(--accent);
-      background: #ffffff;
-      box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(0,0,0,0.04);
+    }
+
+    /* 站長小比兔對話區 (對照站長貓風格) */
+    .mascot-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px 0 20px;
+    }
+
+    .chat-bubble {
+      position: relative;
+      background: var(--bubble-bg);
+      border: 2px solid #000;
+      border-radius: 16px;
+      padding: 16px 20px;
+      text-align: left;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      box-shadow: 4px 4px 0px #000;
+      max-width: 95%;
+      margin-bottom: 16px;
+    }
+
+    .chat-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 12px 10px 0;
+      border-style: solid;
+      border-color: #000 transparent;
+      display: block;
+      width: 0;
+    }
+
+    .chat-bubble::before {
+      content: '';
+      position: absolute;
+      bottom: -9px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 10px 8px 0;
+      border-style: solid;
+      border-color: #fff transparent;
+      display: block;
+      width: 0;
+      z-index: 1;
+    }
+
+    .rabbit-img-wrap {
+      width: 220px;
+      height: 110px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    .rabbit-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 6px 12px rgba(0,0,0,0.08));
     }
 
     .btn-group {
@@ -113,12 +204,12 @@
 
     .btn-primary {
       background: var(--accent);
-      color: #ffffff;
+      color: #fff;
       border: 1px solid var(--accent);
     }
 
     .btn-primary:hover {
-      background: #333333;
+      background: #333;
     }
 
     .btn-secondary {
@@ -128,23 +219,23 @@
     }
 
     .btn-secondary:hover {
-      background: #f0f0f0;
+      background: #eee;
     }
 
-    /* Result Card */
+    /* 解籤結果卡片 */
     .result-card {
       display: none;
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px 24px;
+      border-radius: 20px;
+      padding: 30px 24px;
       text-align: left;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.04);
       animation: fadeIn 0.4s ease-out;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(12px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -161,24 +252,25 @@
     }
 
     .card-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 20px;
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 18px;
     }
 
     .oracle-verse {
       font-family: "Georgia", serif;
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       line-height: 1.8;
-      color: #2c2c2c;
+      color: #222;
       font-style: italic;
       border-left: 3px solid #000;
       padding-left: 16px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
+      white-space: pre-line;
     }
 
     .section-label {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: var(--muted);
@@ -190,40 +282,38 @@
       font-size: 0.95rem;
       line-height: 1.6;
       color: #444;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .xiaobi-box {
-      background: #f5f5f7;
-      border-radius: 12px;
+      background: #f7f7f9;
+      border-radius: 14px;
       padding: 16px;
-      border: 1px dashed #d0d0d5;
-      margin-bottom: 28px;
+      border: 1px dashed #cfcfd6;
+      margin-bottom: 26px;
     }
 
     .xiaobi-title {
       font-size: 0.85rem;
       font-weight: 700;
       margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
 
     .xiaobi-quote {
       font-size: 0.92rem;
-      color: #333;
+      color: #2b2b2b;
       line-height: 1.5;
     }
 
+    /* 導購區 */
     .cta-container {
       text-align: center;
-      padding-top: 16px;
+      padding-top: 18px;
       border-top: 1px solid var(--border);
     }
 
     .cta-desc {
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       color: var(--muted);
       margin-bottom: 12px;
     }
@@ -235,8 +325,8 @@
       text-decoration: none;
       font-size: 0.88rem;
       font-weight: 600;
-      padding: 10px 20px;
-      border-radius: 20px;
+      padding: 10px 22px;
+      border-radius: 25px;
       transition: background 0.2s;
     }
 
@@ -247,12 +337,21 @@
 </head>
 <body>
 
+  <!-- 多語切換鈕 -->
+  <div class="lang-bar">
+    <button class="lang-btn active" onclick="setLanguage('en')">EN</button>
+    <button class="lang-btn" onclick="setLanguage('zh')">繁中</button>
+    <button class="lang-btn" onclick="setLanguage('jp')">日本語</button>
+    <button class="lang-btn" onclick="setLanguage('fr')">FR</button>
+    <button class="lang-btn" onclick="setLanguage('de')">DE</button>
+  </div>
+
   <div class="container">
     <div class="brand-tag">lazy life.</div>
-    <h1>The Rabbit Oracle</h1>
-    <p class="subtitle">Ancient Zhuge Divine Numbers (諸葛神算) translated into 384 fates.<br>Focus on your query and choose 3 digits (0–9).</p>
+    <h1 id="uiTitle">The Rabbit Oracle</h1>
+    <p id="uiSubtitle" class="subtitle">384 Fates from Ancient Zhuge Divine Numbers</p>
 
-    <!-- Inputs -->
+    <!-- 輸入區 -->
     <div class="input-section">
       <div class="digits-wrapper">
         <input type="number" id="d1" class="digit-box" min="0" max="9" placeholder="3" maxlength="1">
@@ -260,46 +359,210 @@
         <input type="number" id="d3" class="digit-box" min="0" max="9" placeholder="4" maxlength="1">
       </div>
 
-      <div class="btn-group">
-        <button class="btn-primary" onclick="castOracle()">Cast The Oracle</button>
-        <button class="btn-secondary" onclick="randomizeFate()">Random Fate</button>
-      </div>
-    </div>
-
-    <!-- Divination Result -->
-    <div id="resultCard" class="result-card">
-      <span id="signBadge" class="sign-badge">SIGN #1</span>
-      <h2 id="cardTitle" class="card-title">Heaven & Creation (乾為天)</h2>
-
-      <div class="section-label">The Oracle Verse</div>
-      <div id="oracleVerse" class="oracle-verse">
-        A bright star shines upon the gate,<br>
-        Fortune arrives, though seemingly late.<br>
-        Do not hurry, do not fret,<br>
-        The grandest path is opening yet.
-      </div>
-
-      <div class="section-label">Insight & Guidance</div>
-      <div id="oracleGuidance" class="guidance-box">
-        Strong momentum surrounds your inquiry. Proceed with quiet confidence, but maintain steady discipline.
-      </div>
-
-      <div class="xiaobi-box">
-        <div class="xiaobi-title">🐰 Xiaobi's Pessimistic Wisdom</div>
-        <div id="xiaobiWisdom" class="xiaobi-quote">
-          "The stars promised a grand future, but they conveniently forgot to mention whether getting out of bed is mandatory."
+      <!-- 站長小比兔趴著對話框區塊 -->
+      <div class="mascot-stage">
+        <div id="xiaobiSpeech" class="chat-bubble">
+          <strong>🐰 Station Master Xiaobi:</strong><br>
+          "Want a better lying-flat life? Let's divine your fortune.<br>
+          <strong>The Rule:</strong> Calm down, pick 3 digits (001–999), or let fate roll for you. Remember: whatever the prophecy says, taking a nap first is never wrong."
+        </div>
+        <div class="rabbit-img-wrap">
+          <!-- 預設讀取專案內的 book_en.png 或自訂小比趴姿圖 -->
+          <img src="book_en.png" alt="Xiaobi Lying Down" class="rabbit-img" onerror="this.src='https://dummyimage.com/220x110/eeeeee/111111&text=Xiaobi+Lying+Flat'">
         </div>
       </div>
 
+      <div class="btn-group">
+        <button id="btnCast" class="btn-primary" onclick="castOracle()">Cast The Oracle</button>
+        <button id="btnRandom" class="btn-secondary" onclick="randomizeFate()">Random Fate</button>
+      </div>
+    </div>
+
+    <!-- 算命結果卡片 -->
+    <div id="resultCard" class="result-card">
+      <span id="signBadge" class="sign-badge">SIGN #1 OF 384</span>
+      <h2 id="cardTitle" class="card-title">Heaven & Momentum</h2>
+
+      <div id="lblVerse" class="section-label">The Oracle Verse</div>
+      <div id="oracleVerse" class="oracle-verse"></div>
+
+      <div id="lblInsight" class="section-label">Insight & Guidance</div>
+      <div id="oracleGuidance" class="guidance-box"></div>
+
+      <div class="xiaobi-box">
+        <div class="xiaobi-title">🐰 Xiaobi's Pessimistic Wisdom</div>
+        <div id="xiaobiWisdom" class="xiaobi-quote"></div>
+      </div>
+
       <div class="cta-container">
-        <div class="cta-desc">Record this warning in your official low-content notebook before fate changes its mind.</div>
-        <a href="https://link.amazon/B09m4WMbS" target="_blank" class="cta-btn">Get Little Rabbit's Notes on Amazon</a>
+        <div id="ctaDesc" class="cta-desc">Record this warning in your official notebook before fate changes its mind.</div>
+        <a id="ctaBtn" href="https://link.amazon/B09m4WMbS" target="_blank" class="cta-btn">Get Little Rabbit's Notes</a>
       </div>
     </div>
   </div>
 
   <script>
-    // 自動跳格設定
+    let currentLang = 'en';
+
+    // 5 國語言 UI 文本字典 (包含站長小比兔規則對白)
+    const i18n = {
+      en: {
+        title: "The Rabbit Oracle",
+        sub: "384 Fates from Ancient Zhuge Divine Numbers",
+        speech: "<strong>🐰 Station Master Xiaobi:</strong><br>\"Want a better lying-flat life? Let's divine your fortune.<br><strong>The Rule:</strong> Calm your mind, pick 3 digits (001–999), or let fate roll for you. Remember: whatever the prophecy says, taking a nap first is never wrong.\"",
+        cast: "Cast The Oracle",
+        rand: "Random Fate",
+        verseLbl: "The Oracle Verse",
+        insightLbl: "Insight & Guidance",
+        ctaDesc: "Record this warning in your notebook before fate changes its mind.",
+        ctaBtn: "Get Little Rabbit's Notes on Amazon",
+        kdpUrl: "https://link.amazon/B09m4WMbS"
+      },
+      zh: {
+        title: "小比兔諸葛神算",
+        sub: "傳承三國諸葛神數．384 爻命運指引",
+        speech: "<strong>🐰 站長小比兔：</strong><br>「想要過上更完美的躺平生活嗎？來算命吧！<br><strong>遊戲規則：</strong>心裡默想問題，選定 3 個數字（001～999），或點隨機搖號。不管卦象說什麼，先睡個午覺總是沒錯的。」",
+        cast: "開始解卦",
+        rand: "隨機搖號",
+        verseLbl: "籤詩原文 / 譯文",
+        insightLbl: "處世指引",
+        ctaDesc: "在命運反悔之前，先把這段神諭記在小比兔筆記本裡。",
+        ctaBtn: "前往 Amazon 收藏《小比兔的ダメダメノート》",
+        kdpUrl: "https://link.amazon/B072n2eaF"
+      },
+      jp: {
+        title: "小比うさぎの神算占い",
+        sub: "諸葛神数に学ぶ・384の運命アドバイス",
+        speech: "<strong>🐰 駅長小比うさぎ：</strong><br>「もっと快適な寝そべり生活（躺平）を送りたい？なら占ってみて。<br><strong>ルール：</strong>心を落ち着かせ、3桁の数字（001〜999）を選ぶかランダムにお任せ。結果がどうあれ、まず昼寝するのが正解だよ。」",
+        cast: "おみくじを引く",
+        rand: "ランダム運命",
+        verseLbl: "お告げの詩",
+        insightLbl: "人生のヒント",
+        ctaDesc: "運命が変わってしまう前に、ノートに記録しておこう。",
+        ctaBtn: "Amazonで公式ノートを見る",
+        kdpUrl: "https://link.amazon/B00kvYWNj"
+      },
+      fr: {
+        title: "L'Oracle du Petit Lapin",
+        sub: "384 destins issus de l'ancien oracle de Zhuge",
+        speech: "<strong>🐰 Chef de Station Xiaobi :</strong><br>« Vous voulez une vie allongée plus tranquille ? Interrogez le destin.<br><strong>La Règle :</strong> Calmez votre esprit, choisissez 3 chiffres (001–999) ou lancez au hasard. Quoi qu'il arrive, faire une sieste n'est jamais une erreur. »",
+        cast: "Consulter l'Oracle",
+        rand: "Destin Aléatoire",
+        verseLbl: "Le Verset Sacré",
+        insightLbl: "Conseil & Sagesse",
+        ctaDesc: "Notez cet avertissement dans votre carnet avant que le destin ne change d'avis.",
+        ctaBtn: "Voir Le Carnet Inutile sur Amazon",
+        kdpUrl: "https://link.amazon/B0dTmtta4"
+      },
+      de: {
+        title: "Das Orakel des kleinen Hasen",
+        sub: "384 Schicksale nach den göttlichen Zahlen von Zhuge",
+        speech: "<strong>🐰 Stationsleiter Xiaobi :</strong><br>„Willst du ein entspannteres Lying-Flat-Leben? Frag das Orakel.<br><strong>Die Regel:</strong> Beruhige deine Gedanken, wähle 3 Ziffern (001–999) oder würfle zufällig. Egal was passiert: Ein Nickerchen ist nie falsch.“",
+        cast: "Orakel befragen",
+        rand: "Zufälliges Schicksal",
+        verseLbl: "Der Orakel-Vers",
+        insightLbl: "Einsicht & Rat",
+        ctaDesc: "Notiere diese Warnung in deinem Notizblock, bevor sich das Schicksal besinnt.",
+        ctaBtn: "Notizblock auf Amazon ansehen",
+        kdpUrl: "https://link.amazon/B029TO94d"
+      }
+    };
+
+    // 籤詩範本資料庫 (支援多語版)
+    const oracleThemes = [
+      {
+        en: {
+          title: "Heaven & Momentum",
+          verse: "A sudden wind clears the autumn mist,\nA hidden path appears as wished.\nStride forward now without delay,\nFortune guards your open way.",
+          insight: "Direct action brings breakthroughs. Clarity replaces recent confusion.",
+          xiaobi: "Success is incoming. Try not to ruin it by overthinking during lunch."
+        },
+        zh: {
+          title: "天行其運・風清霧散",
+          verse: "忽來長風捲秋霧，踏破鐵鞋覓有路。\n直須信步莫遲疑，福祿自隨春風度。",
+          insight: "猶豫不決只會錯過時機，直接採取行動將迎來轉機與清明。",
+          xiaobi: "好運來了，但請克制自己在吃午餐時胡思亂想搞砸它的衝動。"
+        },
+        jp: {
+          title: "天の恵み・霧が晴れる",
+          verse: "秋風が霧を吹き飛ばし、隠れた道が目の前に現れる。\n迷わず一歩を踏み出せば、幸運があなたの歩みを守るだろう。",
+          insight: "行動が突破口を開きます。最近の混乱は解消されるでしょう。",
+          xiaobi: "成功は近づいているよ。お昼ご飯の時に考えすぎて台無しにしないでね。"
+        },
+        fr: {
+          title: "Ciel & Élan",
+          verse: "Un vent soudain dissipe la brume d'automne,\nUn chemin secret s'ouvre enfin.\nAvancez sans hésiter,\nLa fortune guide votre matin.",
+          insight: "L'action directe apporte des percées. La clarté remplace la confusion.",
+          xiaobi: "Le succès arrive. Évitez de tout gâcher en réfléchissant trop au déjeuner."
+        },
+        de: {
+          title: "Himmel & Schwung",
+          verse: "Ein plötzlicher Wind vertreibt den Nebel,\nEin verborgener Weg zeigt sich nun frei.\nSchreite voran ohne Zögern,\nDas Glück steht dir zur Seite bei.",
+          insight: "Direktes Handeln bringt den Durchbruch. Klarheit löst die Verwirrung ab.",
+          xiaobi: "Erfolg naht. Versuche nicht, ihn beim Mittagessen durch Grübeln zu ruinieren."
+        }
+      },
+      {
+        en: {
+          title: "Patience by the Stream",
+          verse: "Cold waters run through mountain stone,\nPatience is best kept when alone.\nWait for the thaw of spring to bloom,\nFor haste only welcomes early doom.",
+          insight: "Hold your position. Rushing will waste resources and lead to friction.",
+          xiaobi: "Doing nothing is officially the recommended cosmic strategy today. Enjoy it."
+        },
+        zh: {
+          title: "石澗寒泉・待時而動",
+          verse: "深山泉冽石嶙峋，靜坐涵養莫爭春。\n待得春風解凍日，自然隨順稱心神。",
+          insight: "暫時按兵不動為上策，操之過急只會消耗能量並產生不必要的摩擦。",
+          xiaobi: "宇宙今天正式批准你什麼都不做，好好躺平吧。"
+        },
+        jp: {
+          title: "清流の忍耐",
+          verse: "冷たい水が岩を流れる。今は静かに待つのが最善なり。\n春の雪解けを待ちなさい。焦りは自滅を招くだけ。",
+          insight: "現状維持が最善策です。焦るとエネルギーを無駄遣いします。",
+          xiaobi: "今日「何もしないこと」は宇宙公認の戦略です。満喫してね。"
+        },
+        fr: {
+          title: "Patience au Ruisseau",
+          verse: "L'eau froide coule sur la pierre,\nLa patience est mère de lumière.\nAttendez le dégel du printemps,\nCar la hâte n'engendre que le tourment.",
+          insight: "Restez sur place. Se précipiter épuiserait vos précieuses ressources.",
+          xiaobi: "Ne rien faire est officiellement la stratégie cosmique recommandée aujourd'hui."
+        },
+        de: {
+          title: "Geduld am Fluss",
+          verse: "Kaltes Wasser umspült den Stein,\nGeduld ist am besten ganz allein.\nWarte, bis der Frühling taut,\nWer eilt, hat auf Sand gebaut.",
+          insight: "Halte deine Position. Übereilung verschwendet Kraft und schafft Reibung.",
+          xiaobi: "Nichts zu tun ist heute die offiziell empfohlene kosmische Strategie. Genieß es."
+        }
+      }
+    ];
+
+    // 切換語系
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const dict = i18n[lang];
+      document.getElementById('uiTitle').textContent = dict.title;
+      document.getElementById('uiSubtitle').textContent = dict.sub;
+      document.getElementById('xiaobiSpeech').innerHTML = dict.speech;
+      document.getElementById('btnCast').textContent = dict.cast;
+      document.getElementById('btnRandom').textContent = dict.rand;
+      document.getElementById('lblVerse').textContent = dict.verseLbl;
+      document.getElementById('lblInsight').textContent = dict.insightLbl;
+      document.getElementById('ctaDesc').textContent = dict.ctaDesc;
+      document.getElementById('ctaBtn').textContent = dict.ctaBtn;
+      document.getElementById('ctaBtn').href = dict.kdpUrl;
+
+      // 若目前已有顯示卡片，即時重新渲染語系
+      const card = document.getElementById('resultCard');
+      if (card.style.display === 'block') {
+        const signNum = parseInt(card.dataset.signIndex) || 1;
+        renderSign(signNum);
+      }
+    }
+
+    // 輸入框跳格設定
     const inputs = [document.getElementById('d1'), document.getElementById('d2'), document.getElementById('d3')];
     inputs.forEach((input, idx) => {
       input.addEventListener('input', () => {
@@ -310,7 +573,6 @@
       });
     });
 
-    // 隨機搖號
     function randomizeFate() {
       inputs.forEach(input => {
         input.value = Math.floor(Math.random() * 10);
@@ -318,57 +580,31 @@
       castOracle();
     }
 
-    // 諸葛神數 384 爻籤演算法
+    // 諸葛神數 384 爻演算法
     function castOracle() {
       const v1 = parseInt(inputs[0].value) || 0;
       const v2 = parseInt(inputs[1].value) || 0;
       const v3 = parseInt(inputs[2].value) || 0;
 
-      // 百十個位組合成三位數，以 384 籤為循環基準
       const combined = (v1 * 100) + (v2 * 10) + v3;
       const signIndex = ((combined <= 0 ? 384 : combined - 1) % 384) + 1;
 
       renderSign(signIndex);
     }
 
-    // 範例籤資料庫與動態模板生成
-    const sampleThemes = [
-      {
-        title: "Heaven & Momentum",
-        verse: "A sudden wind clears the autumn mist,\nA hidden path appears as wished.\nStride forward now without delay,\nFortune guards your open way.",
-        insight: "Direct action brings breakthroughs. Clarity replaces recent confusion.",
-        xiaobi: "Success is incoming. Try not to ruin it by overthinking during lunch."
-      },
-      {
-        title: "Patience by the Stream",
-        verse: "Cold waters run through mountain stone,\nPatience is best kept when alone.\nWait for the thaw of spring to bloom,\nFor haste only welcomes early doom.",
-        insight: "Hold your position. Rushing will waste resources and lead to unnecessary friction.",
-        xiaobi: "Doing nothing is officially the recommended cosmic strategy today. Enjoy it."
-      },
-      {
-        title: "The Silver Lantern",
-        verse: "Night falls deep upon the road,\nA steady light relieves the load.\nListen to quiet words from a friend,\nBefore this winding path can bend.",
-        insight: "Valuable guidance is nearby. Seek counsel from someone practical rather than emotional.",
-        xiaobi: "Everyone has advice for you. Most of it is bad, but at least this one is harmless."
-      },
-      {
-        title: "Gathering at the Gate",
-        verse: "Clouds gather high above the tree,\nThings are not what they seem to be.\nSecure your borders, check your store,\nBefore inviting trouble to your door.",
-        insight: "Protect your assets and energy. Guard against boundary-crossers or hasty commitments.",
-        xiaobi: "Saying 'no' costs zero dollars and saves approximately 40 hours of regret."
-      }
-    ];
-
     function renderSign(signIndex) {
-      const theme = sampleThemes[(signIndex - 1) % sampleThemes.length];
-
-      document.getElementById('signBadge').textContent = `SIGN #${signIndex} OF 384`;
-      document.getElementById('cardTitle').textContent = `${theme.title}`;
-      document.getElementById('oracleVerse').innerHTML = theme.verse.replace(/\n/g, '<br>');
-      document.getElementById('oracleGuidance').textContent = theme.insight;
-      document.getElementById('xiaobiWisdom').textContent = `"${theme.xiaobi}"`;
+      const themeData = oracleThemes[(signIndex - 1) % oracleThemes.length];
+      const localized = themeData[currentLang] || themeData['en'];
 
       const resultCard = document.getElementById('resultCard');
+      resultCard.dataset.signIndex = signIndex;
+
+      document.getElementById('signBadge').textContent = `SIGN #${signIndex} OF 384`;
+      document.getElementById('cardTitle').textContent = localized.title;
+      document.getElementById('oracleVerse').textContent = localized.verse;
+      document.getElementById('oracleGuidance').textContent = localized.insight;
+      document.getElementById('xiaobiWisdom').textContent = `"${localized.xiaobi}"`;
+
       resultCard.style.display = 'block';
       resultCard.scrollIntoView({ behavior: 'smooth' });
     }
