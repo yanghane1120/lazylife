@@ -730,25 +730,56 @@
 
     const officialEnBookTitle = "The Little White Rabbit's Useless Notebook: A Sarcastic Gag Journal for Overwhelmed Humans, Students, and Burnout Office Workers (Funny Novelty Notebook)";
 
-    const i18n = {
+const i18n = {
       en: {
+        tabNum: "🔢 3 Digits",
+        tabChar: "✍️ Chinese Characters",
         title: "The Rabbit Oracle",
-        sub: "384 Fates from the Ancient Three Kingdoms Era of China (Zhuge Divine Numbers)",
-        speech: "<strong>🐰 Station Master Xiaobi:</strong><br>\"Want a better lying-flat life? Let's divine your fortune.<br><strong>The Rule:</strong> Calm your mind, pick 3 digits or type 3 Chinese words. Remember: whatever the prophecy says, taking a nap first is never wrong.\"",
-        cast: "Cast The Oracle",
-        rand: "Random Fate",
-        legendTitle: "⚔️ Who is Master Zhuge Liang? (諸葛孔明)",
-        legendDesc: "The greatest strategist in Chinese history during the legendary Three Kingdoms era (181–234 AD). A transcendent statesman, inventor, and master of celestial mechanics who could literally 'borrow the southeast wind' and predict battle outcomes down to the exact second. Legend says he encoded 384 cosmic fates into this mathematical oracle system.",
-        legendTip: "🐰 <strong>Xiaobi's Reality Check:</strong> \"He was a cosmic genius, but he literally worked 20 hours a day until terminal burnout. He is an icon, but definitely NOT a role model for work-life balance. Use his divine oracle, but never copy his overtime schedule.\"",
-        verseLbl: "The Oracle Verse",
-        insightLbl: "Insight & Guidance",
-        askAi: "🐰 \"Still confused? I'm exhausted and taking a nap. Go interrogate these AIs:\"",
-        ctaDesc: "Record this warning in your notebook before fate changes its mind.",
-        ctaBtn: officialEnBookTitle,
-        kdpUrl: "https://link.amazon/B072n2eaF",
-        portalTitle: "Back to lazy life. Official Portal",
-        portalDesc: "Explore the low-energy rabbit universe, desk timer & lifestyle tools."
+        // ...其餘欄位維持原樣
       },
+      zh: {
+        tabNum: "🔢 數字算命 (3 Digits)",
+        tabChar: "✍️ 中文測字 (3 Words)",
+        title: "小比兔諸葛神算",
+        // ...其餘欄位維持原樣
+      },
+      jp: {
+        tabNum: "🔢 3桁の数字",
+        tabChar: "✍️ 漢字3文字",
+        title: "小比うさぎの神算占い",
+        // ...其餘欄位維持原樣
+      },
+      fr: {
+        tabNum: "🔢 3 Chiffres",
+        tabChar: "✍️ 3 Caractères",
+        title: "L'Oracle du Petit Lapin",
+        // ...其餘欄位維持原樣
+      },
+      de: {
+        tabNum: "🔢 3 Ziffern",
+        tabChar: "✍️ 3 Schriftzeichen",
+        title: "Das Orakel des kleinen Hasen",
+        // ...其餘欄位維持原樣
+      },
+      es: {
+        tabNum: "🔢 3 Dígitos",
+        tabChar: "✍️ 3 Caracteres",
+        title: "El Oráculo del Conejo Xiaobi",
+        // ...其餘欄位維持原樣
+      },
+      pt: {
+        tabNum: "🔢 3 Dígitos",
+        tabChar: "✍️ 3 Caracteres",
+        title: "O Oráculo do Coelho Xiaobi",
+        // ...其餘欄位維持原樣
+      },
+      it: {
+        tabNum: "🔢 3 Cifre",
+        tabChar: "✍️ 3 Caratteri",
+        title: "L'Oracolo del Coniglio Xiaobi",
+        // ...其餘欄位維持原樣
+      }
+    };
       zh: {
         title: "小比兔諸葛神算",
         sub: "傳承古老中國的三國朝代諸葛神數・384 爻命運指引",
@@ -877,7 +908,7 @@
       }
     };
 
-    function setLanguage(lang) {
+function setLanguage(lang) {
       currentLang = lang;
       document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
       const activeBtn = Array.from(document.querySelectorAll('.lang-btn')).find(b => {
@@ -892,10 +923,15 @@
       document.getElementById('xiaobiSpeech').innerHTML = dict.speech;
       document.getElementById('btnCast').textContent = dict.cast;
       document.getElementById('btnRandom').textContent = dict.rand;
+
+      // ★ 新增這兩行：動態更新模式切換按鈕文字 ★
+      if (dict.tabNum) document.getElementById('tabNumber').textContent = dict.tabNum;
+      if (dict.tabChar) document.getElementById('tabChar').textContent = dict.tabChar;
       
       document.getElementById('legendTitle').innerHTML = dict.legendTitle;
       document.getElementById('legendDesc').innerHTML = dict.legendDesc;
       document.getElementById('legendTip').innerHTML = dict.legendTip;
+      // ...後面代碼維持原樣
 
       document.getElementById('lblVerse').textContent = dict.verseLbl;
       document.getElementById('lblInsight').textContent = dict.insightLbl;
