@@ -328,7 +328,7 @@
       </a>
     </div>
 
-    <!-- 官方社群平台 (已更換為趴姿 icon-512，防裁切) -->
+    <!-- 官方社群平台 -->
     <div id="secSocialTitle" class="section-title">官方社群平台</div>
     <div class="links-container">
       <!-- YouTube -->
@@ -368,9 +368,10 @@
       </a>
     </div>
 
-    <!-- 友情推薦區 (HAMAGM 互聯引流) -->
+    <!-- 友情推薦區 -->
     <div id="secPartnerTitle" class="section-title">友情推薦</div>
     <div class="links-container">
+      <!-- HAMAGM -->
       <a href="https://yanghane1120.github.io/hamagm/" class="hub-card" target="_blank">
         <div class="card-thumb">
           <img src="cat-greeting.jpg" alt="HAMAGM Ragdoll Cat" onerror="if (this.src.indexOf('images/') === -1) { this.src='images/cat-greeting.jpg'; }">
@@ -378,6 +379,18 @@
         <div class="card-body">
           <div class="card-title"><span id="partnerTitle">HAMAGM 萬用動物市集</span> <span class="badge partner">Partner</span></div>
           <div id="partnerDesc" class="card-desc">哈瑪布偶貓店長鎮店！精選全球好物、科技選品與生活日常</div>
+        </div>
+        <div class="arrow">›</div>
+      </a>
+
+      <!-- CAT & WASHINGTON -->
+      <a href="https://yanghane1120.github.io/catandwashington/" class="hub-card" target="_blank">
+        <div class="card-thumb">
+          <img src="images/cat-greeting.jpg" alt="CAT & WASHINGTON" onerror="if (this.src.indexOf('images/') !== -1) { this.src='cat-greeting.jpg'; }">
+        </div>
+        <div class="card-body">
+          <div class="card-title"><span id="cwTitle">CAT & WASHINGTON 官網</span> <span class="badge partner">Official</span></div>
+          <div id="cwDesc" class="card-desc">街頭籃球貓咪奇遇・華盛頓街頭冒險與熱血故事</div>
         </div>
         <div class="arrow">›</div>
       </a>
@@ -410,6 +423,8 @@
         fbDesc: "追蹤小比兔官方最新創作動態與交流",
         partnerTitle: "HAMAGM 萬用動物市集",
         partnerDesc: "哈瑪布偶貓店長鎮店！精選全球好物、科技選品與生活日常",
+        cwTitle: "CAT & WASHINGTON 官網",
+        cwDesc: "街頭籃球貓咪奇遇・華盛頓街頭冒險與熱血故事",
         footerText: "© 2026 lazy life. All rights reserved.<br>身為 Amazon 聯盟行銷夥伴，本站可能自符合條件的購買中獲得收益。"
       },
       en: {
@@ -430,6 +445,8 @@
         fbDesc: "Official creator news and brand community",
         partnerTitle: "HAMAGM Animal Bazaar",
         partnerDesc: "Hosted by Store Manager Hama the Ragdoll Cat! Curated gadgets & home gear.",
+        cwTitle: "CAT & WASHINGTON Official",
+        cwDesc: "Street basketball cat chronicles・Urban adventures in Washington.",
         footerText: "© 2026 lazy life. All rights reserved.<br>As an Amazon Associate I earn from qualifying purchases."
       },
       ja: {
@@ -450,6 +467,8 @@
         fbDesc: "公式最新情報とコミュニティ",
         partnerTitle: "HAMAGM 動物マーケット",
         partnerDesc: "ラグドールのハマ店長がお出迎え！厳選ガジェット＆便利グッズ満載。",
+        cwTitle: "CAT & WASHINGTON 公式サイト",
+        cwDesc: "ストリートバスケ猫の冒険譚・ワシントンの街角ストーリー。",
         footerText: "© 2026 lazy life. All rights reserved.<br>Amazonアソシエイトとして、適格販売により収入を得ています。"
       },
       de: {
@@ -470,6 +489,8 @@
         fbDesc: "Offizielle Neuigkeiten & Community",
         partnerTitle: "HAMAGM Animal Bazaar",
         partnerDesc: "Geführt von Kater Hama! Ausgewählte Gadgets & Lifestyle-Produkte.",
+        cwTitle: "CAT & WASHINGTON Offizielle Seite",
+        cwDesc: "Streetball-Katzen-Chroniken・Abenteuer auf den Straßen von Washington.",
         footerText: "© 2026 lazy life. Alle Rechte vorbehalten.<br>Als Amazon-Partner verdiene ich an qualifizierten Verkäufen."
       },
       fr: {
@@ -490,6 +511,8 @@
         fbDesc: "Actualités officielles et communauté",
         partnerTitle: "Bazar HAMAGM",
         partnerDesc: "Géré par le chat Hama ! Sélection de gadgets high-tech et du quotidien.",
+        cwTitle: "Site Officiel CAT & WASHINGTON",
+        cwDesc: "Chroniques de chats basketteurs de rue・Aventures urbaines à Washington.",
         footerText: "© 2026 lazy life. Tous droits réservés.<br>En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises."
       }
     };
@@ -514,6 +537,8 @@
       document.getElementById('fbDesc').innerText = data.fbDesc;
       document.getElementById('partnerTitle').innerText = data.partnerTitle;
       document.getElementById('partnerDesc').innerText = data.partnerDesc;
+      document.getElementById('cwTitle').innerText = data.cwTitle;
+      document.getElementById('cwDesc').innerText = data.cwDesc;
       document.getElementById('footerText').innerHTML = data.footerText;
 
       const btns = document.querySelectorAll('.lang-btn');
